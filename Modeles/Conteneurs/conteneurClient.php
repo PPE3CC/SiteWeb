@@ -13,10 +13,12 @@ Class conteneurClient
 		}
 
 	//METHODE AJOUTANT UN Client------------------------------------------------------------------------------
-	public function ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient)
+
+	public function ajouteUnClient($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient, $actif)
+
 		{
 		$unIdClient = $this->nbClient() + 1;
-		$unClient = new client($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement,$unLoginClient, $unPwdClient);
+		$unClient = new client($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement,$unLoginClient, $unPwdClient, $actif);
 		$this->lesClients->append($unClient);
 		}
 
@@ -89,16 +91,25 @@ Class conteneurClient
 			// On supprime les caractères invisibles que le SGBD ajoute pour compenser puisqu'on utilise des char(n)
 			$testLogin = trim($iClient->current()->getLoginClient());
 			$testPassword = trim($iClient->current()->getPwdClient());
+			$actif = trim($iClient->current()->getActif());
 			//$test = $testLogin===$unLogin;
 			//$test2 = $testPassword===$unPassword;
 			//echo "Login : ".strcmp($unLogin,$testLogin)."<br/>".$test;
 			//echo "Password : ".strcmp($unPassword,$testPassword)."<br/>".$test2;
 			//On test avec la fonction strcmp
-			if (strcmp($unPassword,$testPassword)===0 && strcmp($unPassword,$testPassword)===0)
-				{
+			if (strcmp($unPassword,$testPassword)===0 && strcmp($unLogin,$testLogin)===0)
+			{
 				//maj du booléen
-				$trouve=1;
+				if($actif==0)
+				{
+					$trouve=2;
 				}
+				else
+				{
+					$trouve=1;
+				}
+			}
+
 			//SINON on passe au client suivant
 			else
 				{

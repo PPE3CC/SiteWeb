@@ -56,7 +56,7 @@ Class gestionVideo
 		while ($nb<sizeof($resultat))
 			{
 			//instanciation du client et ajout de celui-ci dans la collection
-			$this->tousLesClients->ajouteUnClient($resultat[$nb][0],$resultat[$nb][1],$resultat[$nb][2],$resultat[$nb][3],$resultat[$nb][4],$resultat[$nb][5],$resultat[$nb][6]);
+			$this->tousLesClients->ajouteUnClient($resultat[$nb][0],$resultat[$nb][1],$resultat[$nb][2],$resultat[$nb][3],$resultat[$nb][4],$resultat[$nb][5],$resultat[$nb][6],$resultat[$nb][7]);
 			$nb++;
 
 			}
@@ -184,7 +184,6 @@ Class gestionVideo
 		$sonNumero = $this->maBD->insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
 		//instanciation du client et ajout de celui-ci dans la collection
 		$this->tousLesClients->ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
-
 		}
 	//METHODE INSERANT UN FILM----------------------------------------------------------------------------------------------------------
 	public function ajouteUnFilm($unIdFilm,$unTitreFilm, $unRealisateurFilm, $unIdGenre,$uneDureeFilm)

@@ -55,6 +55,8 @@ class Controleur
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public function affichePage($action,$vue)
 		{
+			echo $vue;
+			echo $action;
 		//SELON la vue demandée
 		switch ($vue)
 			{
@@ -102,21 +104,15 @@ class Controleur
 			//CAS ajouter un utilisateur ------------------------------------------------------------------------------
 			case 'nouveauLogin' :
 				// ici il faut pouvoir recuperer un nouveau utilisateur
+
+				$this->maVideotheque->ajouteUnClient($_POST['nomClient'], $_POST['prenomClient'], $_POST['emailClient'], $_POST['dateAbonnementClient'], $_POST['login'], $_POST['password'], 0);
 				$nom = $_POST['nomClient'];
 				$prenom = $_POST['prenomClient'];
 				$email = $_POST['emailClient'];
 				$dateAbonnement = $_POST['dateAbonnementClient'];
 				$login = $_POST['login'];
 				$password = $_POST['password'];
-				$verifIdentifiant = $this->maVideotheque->VerifIdentifiant($login);
-				echo $verifIdentifiant;
-
-				if ($verifIdentifiant == 1){
-					$this->maVideotheque->ajouteUnClient($nom, $prenom, $email, $dateAbonnement, $login, $password);
-				}
-				else{
-					echo"Identifiants déjà utilisé";
-				}
+				$this->maVideotheque->ajouteUnClient($nom, $prenom, $email, $dateAbonnement, $login, $password);
 				break;
 
 			//CAS verifier un utilisateur ------------------------------------------------------------------------------
@@ -124,8 +120,8 @@ class Controleur
 				// ici il faut pouvoir vérifier un login un nouveau utilisateur
 				//Je récupère les login et password saisi et je verifie leur existancerequire
 				//pour cela je verifie dans le conteneurClient via la gestion.
-				$unLogin=$_GET['login'];
-				$unPassword=$_GET['password'];
+				$unLogin=$_POST['login'];
+				$unPassword=$_POST['password'];
 				$resultat=$this->maVideotheque->verifLogin($unLogin, $unPassword);
 						//si le client existe alors j'affiche le menu et la page visuGenre.php
 						if($resultat==1)
@@ -135,16 +131,30 @@ class Controleur
 						}
 						else
 						{
-							// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
-							//des mauvais identifiants;
-							session_destroy();
-							echo "</nav>
-									<div class='container h-100'>
-										<div class='row h-100 justify-content-center align-items-center'>
-											<span class='text-white'>Identifiants incorrects</span>
-										</div>
-									</div>
-									<meta http-equiv='refresh' content='1;index.php'>";
+							if($resultat==2)
+							{
+								echo "</nav>
+												<div class='container h-100'>
+					 								<div class='row h-100 justify-content-center align-items-center'>
+						 								<span class='text-white'>Votre compte n'est pas actif.</span>
+			  									</div>
+					 							</div>
+											<meta http-equiv='refresh' content='1;index.php'>";
+							}
+							else
+							{
+								// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
+								//des mauvais identifiants;
+								session_destroy();
+
+								echo "</nav>
+												<div class='container h-100'>
+					 								<div class='row h-100 justify-content-center align-items-center'>
+						 								<span class='text-white'>Identifiants incorrects</span>
+			  									</div>
+					 							</div>
+											<meta http-equiv='refresh' content='1;index.php'>";
+							}
 						}
 				break;
 			}

@@ -1,5 +1,5 @@
 <?php
- //abczouhgrzouhgoiezjfpoezjfipjezoifj
+
 class accesBD
 	{
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +116,7 @@ class accesBD
 		$requete->bindValue(7,$unPwdClient);
 		$requete->bindValue(8,0);
 
-		if ($requete )
+		
 		//exécution de la requête SQL
 		if(!$requete->execute())
 		{

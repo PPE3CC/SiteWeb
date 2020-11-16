@@ -10,9 +10,10 @@ Class client
 	private $dateAbonnementClient;
 	private $loginClient;
 	private $pwdClient;
+	private $actif;
 
 	//CONSTRUCTEUR-----------------------------------------------------------------------------
-	public function __construct($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient)
+	public function __construct($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient, $unBoolActif)
 		{
 		$this->idClient = $unIdClient;
 		$this->nomClient = $unNomClient;
@@ -21,7 +22,9 @@ Class client
 		$this->dateAbonnementClient = $uneDateAbonnement;
 		$this->loginClient = $unLoginClient;
 		$this->pwdClient = $unPwdClient;
+		$this->actif = $unBoolActif;
 		}
+
 	//ACCESSEURS-------------------------------------------------------------------------------
 	public function getIdClient()
 		{
@@ -51,6 +54,10 @@ Class client
 	public function getPwdClient()
 	{
 		return $this->pwdClient;
+	}
+	public function getActif()
+	{
+		return $this->actif;
 	}
 
 	}
