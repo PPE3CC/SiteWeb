@@ -111,6 +111,15 @@ class Controleur
 				if ($verifIdentifiant == 0) {
 					$this->maVideotheque->ajouteUnClient($nom, $prenom, $email, $dateAbonnement, $login, $password);
 					echo "Vous avez bien créer votre compte";
+					//mail("PPE3.Carcouet@gmail.com", "Nouveau client", "Nouveau client enregistré sur votre site :\nMonsieur/Madame" + $nom + " " + $prenom +" vient de créer un compte sur votre site web. Avec l'adresse suivante : " + $email + ". En date du " + $dateAbonnement + ". Login : " + $login + ".");
+					//mail($email, "Inscription en attente de validation par notre équipe", "Bonjour Monsieur/Madame " + $nom + " " + $prenom + ".\n\n
+					//Nous sommes heureux de vous compter parmis nos inscrits à notre service de vidéothèque !\n 
+					//Votre inscription à bien était reçu et est en cours de validation. Cependant il reste une dernière étape :\n 
+					//En effet, afin de finaliser votre inscription, veuillez nous envoyer un chèque de 45€ à l'ordre suivant : VidéoStourem.\n 
+					//Après réception de ce dernier nous validerons votre compte dans les 24h qui suivent la réception.\n\n 
+					//Veuillez agréer, madame, monsieur, l'expression de nos sincère salutations. \n\n
+					//L'équipe VidéoStouRem.");
+					//A tester en mode en ligne.
 				} else {
 					echo "Identifiants déjà utilisé";
 				}
