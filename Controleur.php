@@ -90,6 +90,12 @@ class Controleur
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
 
 				break;
+				
+				//CAS visualisation 
+			case 'visualiserEmprunts':
+				//ici il faut pouvoir afficher la liste des emprunts pour un utilisateur
+				require 'Vues/emprunt.php'
+				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
