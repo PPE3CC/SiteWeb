@@ -1,5 +1,6 @@
 ﻿<?php
 session_start();
+// session_destroy();
 include 'Controleur.php';
 
 function chargerPage()

@@ -88,13 +88,14 @@ class Controleur
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
 			case 'visualiser':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
-				require 'Vues/construction.php';
+				require 'Vues/modifCord.php';
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
 				require 'Vues/modifCord.php';
+				require 'Vues/menu.php';
 				break;
 
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
