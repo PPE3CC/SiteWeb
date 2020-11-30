@@ -4,57 +4,22 @@ include 'Controleur.php';
 
 function chargerPage()
 {
-	$monControleur = new Controleur();
-	$monControleur->afficheEntete();
-		if(isset($_POST['login']))
-		{
-				if ((isset($_POST['vue']))&& (isset($_POST['action'])))
-				{   $monControleur->affichePage($_POST['action'],$_POST['vue']);
-				}
-		}
-		else
-		{
-					premier_affichage();
-		}
-	$monControleur->affichePiedPage();
+    $monControleur = new Controleur();
+    $monControleur->afficheEntete();
+    if (isset($_POST['login']) || isset($_SESSION["login_client"])) {
+
+        if ((isset($_POST['vue'])) && (isset($_POST['action']))) {
+            $monControleur->affichePage($_POST['action'], $_POST['vue']);
+        }
+    } else {
+
+        premier_affichage();
+    }
+    $monControleur->affichePiedPage();
 }
-	function premier_affichage()
-	{
-		/*echo "<div class = 'centrePage'>
-				<table border=3 align=center>
-					<tr align=center>
-						<td>
-							<h2> Nouveau compte</h2>
-						</td>
-						<td>
-							<h2>    Je suis déjà client  </h2>
-						</td>
-					</tr>
-					<tr align=center>
-						<td>
-								<form href = 'index.php?vue=compte&action=nouveauLogin' method='post'>
-									<input type='text' name='nomClient' value='saisir votre nom'/><br>
-									<input type='text' name='prenomClient' value='Saisir votre prenom'/><br>
-									<input type='text' name='emailClient' value='Saisir votre email'/><br>
-									<input type='text' name='dateAbonnementClient' value='Date souhaitée d abonnement'/><br>
-									<input type='text' name='login' value='Saisir votre login'/><br>
-									<input type='text' name='Password' value='Choisir un mot de passe'/><br>
-									<input type='submit' value='Accéder'/>
-								   </form>
-						</td>
-						<td>
-							<form action=index.php method=GET>
-									<input type='text' name='login'/><br>
-									<input type='text' name='password'/><br>
-									<input type='hidden' name='vue' value='compte'>
-									<input type='hidden' name='action' value='verifLogin'/>
-									<input type='submit' value='Accéder'/>
-								</form>
-						</td>
-					</tr>
-				</table>
-			</div>";*/
-		echo "</nav>
+function premier_affichage()
+{
+    echo "</nav>
                 <div class='container h-100'>
                     <div class='row h-100 justify-content-center align-items-center'>
                         <table class='table w-50'>
@@ -90,9 +55,6 @@ function chargerPage()
                         </table>
                     </div>
                 </div>";
-	}
+}
 
-	chargerPage();
-
-
-?>
+chargerPage();
