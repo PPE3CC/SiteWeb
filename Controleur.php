@@ -118,7 +118,7 @@ class Controleur
 			//CAS verifier un utilisateur ------------------------------------------------------------------------------
 			case 'verifLogin' :
 				// ici il faut pouvoir vérifier un login un nouveau utilisateur
-				//Je récupère les login et password saisi et je verifie leur existancerequire
+				//Je récupère les login et password saisi et je verifie leur existance require
 				//pour cela je verifie dans le conteneurClient via la gestion.
 				$unLogin=$_POST['login'];
 				$unPassword=$_POST['password'];
@@ -134,12 +134,15 @@ class Controleur
 							if($resultat==2)
 							{
 								echo "</nav>
-												<div class='container h-100'>
-					 								<div class='row h-100 justify-content-center align-items-center'>
-						 								<span class='text-white'>Votre compte n'est pas actif.</span>
-			  									</div>
-					 							</div>
-											<meta http-equiv='refresh' content='1;index.php'>";
+										<div class='container h-100'>
+											<div class='row h-100 justify-content-center align-items-center'>
+												<div class='text-center text-white'
+													<span class='text-white'>Votre compte n'est pas actif.<br>
+													Vous allez être redirigé à la page de connexion dans 5 secondes...</span>
+												</div>
+											</div>
+										</div>
+										<meta http-equiv='refresh' content='5;index.php'>";
 							}
 							else
 							{
@@ -148,12 +151,15 @@ class Controleur
 								session_destroy();
 
 								echo "</nav>
-												<div class='container h-100'>
-					 								<div class='row h-100 justify-content-center align-items-center'>
-						 								<span class='text-white'>Identifiants incorrects</span>
-			  									</div>
-					 							</div>
-											<meta http-equiv='refresh' content='1;index.php'>";
+										<div class='container h-100'>
+											<div class='row h-100 justify-content-center align-items-center'>
+												<div class='text-center text-white'
+													<span class='text-white'>Identifiants incorrects.<br>
+													Vous allez être redirigé à la page de connexion dans 5 secondes...</span>
+												</div>
+											</div>
+										</div>
+										<meta http-equiv='refresh' content='5;index.php'>";
 							}
 						}
 				break;
