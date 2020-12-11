@@ -26,8 +26,8 @@ function chargerPage()
 function premier_affichage()
 {
     echo "</nav>
-                <div class='container h-100'>
-                    <div class='row h-100 justify-content-center align-items-center'>
+                <div class='container'>
+                    <div class='row justify-content-center align-items-center'>
                         <table class='table w-50'>
                             <thead>
                                 <td class='head-table-connexion text-white'>Je suis déjà client</td>

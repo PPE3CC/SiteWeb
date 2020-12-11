@@ -201,7 +201,7 @@ class accesBD
 		$requete = $this->conn->prepare("INSERT INTO saison (idSerie,idSaison,anneeSaison, nbrEpisodesPrevus) VALUES (?,?,?,?);");
 		$requete->bindValue(1, $unIdSerie);
 		$requete->bindValue(2, $sonId);
-		$requete->bindValue(3, $uneAnneSaison);
+		$requete->bindValue(3, $uneAnneeSaison);
 		$requete->bindValue(4, $unNbrEpisodesPrevus);
 
 		//exécution de la requête SQL
@@ -371,6 +371,17 @@ class accesBD
 			return $nbEpisode + 1;
 		} else {
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
+		}
+	}
+
+	public function UpdateMotDePasseUser($uneTable, $leNouveauMdp, $leLoginClient)
+	{
+		$stringQuery = $this->specialCase("UPDATE ", $uneTable, " SET pwd =", $leNouveauMdp, "WHERE login = ", $leLoginClient);
+		// echo $stringQuery;
+		$requete = $this->conn->prepare($stringQuery);
+
+		if (!$requete->execute()) {
+			die("Erreur dans insertEmprunt : " . $requete->errorCode());
 		}
 	}
 }

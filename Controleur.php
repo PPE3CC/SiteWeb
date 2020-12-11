@@ -94,9 +94,9 @@ class Controleur
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
-				echo "toto";
 				require 'Vues/menu.php';
-				require 'Vues/modifCord.php';
+				require 'Vues/modifCoord.php';
+				// $this->maVideotheque->UpdateMotDePasseUser();
 				break;
 
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
