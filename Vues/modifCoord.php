@@ -12,8 +12,6 @@ if ((isset($_POST['nouveauMdp'])) && (isset($_POST["verifMdp"]))) {
     $verifMdp = $_POST['verifMdp'];
     $loginClient = $_SESSION['login_client'];
     if ($nouveauMdp === $verifMdp) {
-
-        $this->UpdateMotDePasseUser('client', $nouveauMdp, $loginClient);
-        echo " toto";
+        echo " ---- ModifCoord page";
     }
 }

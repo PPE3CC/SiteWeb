@@ -27,7 +27,7 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<ul class="dropdown">
-							<a class="btn btn-secondary" href="index.php">Acceuil <span class="sr-only">(current)</span></a>
+							<a class="btn btn-secondary" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 						</ul>
 					</li>
 					<li class="nav-item active">

@@ -251,7 +251,7 @@ class accesBD
 
 		//exécution de la requête SQL
 		if (!$requete->execute()) {
-			die("Erreur dans insertEmprunt : " . $requete->errorCode());
+			die("Erreur dans insertEmprunt : " . $requete->errorCode() . "slt" . $requete->error_log());
 		}
 
 		//retour de l'identifiant du nouveau tuple
@@ -374,14 +374,15 @@ class accesBD
 		}
 	}
 
-	public function UpdateMotDePasseUser($uneTable, $leNouveauMdp, $leLoginClient)
+	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
 	{
-		$stringQuery = $this->specialCase("UPDATE ", $uneTable, " SET pwd =", $leNouveauMdp, "WHERE login = ", $leLoginClient);
-		// echo $stringQuery;
-		$requete = $this->conn->prepare($stringQuery);
-
+		echo " ----- accesBD";
+		$requete = $this->conn->prepare("UPDATE client SET pwd= :pwdClient WHERE login= :loginClient");
+		$requete->bindParam(':pwdClient', $leNouveauMdp);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		// var_dump($requete);
 		if (!$requete->execute()) {
-			die("Erreur dans insertEmprunt : " . $requete->errorCode());
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
 		}
 	}
 }
