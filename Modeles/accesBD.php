@@ -376,11 +376,10 @@ class accesBD
 
 	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
 	{
-		echo " ----- accesBD";
+		// echo " ----- accesBD";
 		$requete = $this->conn->prepare("UPDATE client SET pwd= :pwdClient WHERE login= :loginClient");
 		$requete->bindParam(':pwdClient', $leNouveauMdp);
 		$requete->bindParam(':loginClient', $leLoginClient);
-		// var_dump($requete);
 		if (!$requete->execute()) {
 			die("Erreur dans UpdateMDP : " . $requete->errorCode());
 		}

@@ -18,7 +18,6 @@ if ((isset($_POST['nouveauMdp'])) && (isset($_POST["verifMdp"]) && (isset($_POST
             if ($nouveauMdp === $verifMdp) {
                 $this->maVideotheque->updateUnMdp($nouveauMdp, $loginClient);
                 echo "\nLe changement de mot bien a bien été effectué. \n";
-                // echo " ---- ModifCoord page";
             } else {
                 echo "Les nouveaux mot de passe ne concorde pas";
             }

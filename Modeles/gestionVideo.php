@@ -332,9 +332,9 @@ class gestionVideo
 	public function updateUnMdp($nouveauMdp, $loginClient)
 	{
 		$this->maBD->UpdateMotDePasseUser($nouveauMdp, $loginClient);
-		echo ' ----- Update mdp gestion_video';
 	}
 
+	//Getteur
 	public function getMdp($loginClient)
 	{
 		return $this->maBD->GetMotDePasse($loginClient);
