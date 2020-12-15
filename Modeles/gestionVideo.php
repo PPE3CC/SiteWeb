@@ -331,21 +331,12 @@ class gestionVideo
 
 	public function updateUnMdp($nouveauMdp, $loginClient)
 	{
-		$changeMdp = $this->maBD->UpdateMotDePasseUser($nouveauMdp, $loginClient);
+		$this->maBD->UpdateMotDePasseUser($nouveauMdp, $loginClient);
 		echo ' ----- Update mdp gestion_video';
 	}
+
+	public function getMdp($loginClient)
+	{
+		return $this->maBD->GetMotDePasse($loginClient);
+	}
 }
-
-
-	
-		// //insertion de l'emprunt  dans la base de données
-		// $sonCode=$this->maBD->insertEmprunt($uneDateEmprunt, $unIdClient, $unIdSupport);
-
-		// //instanciation de l'emprunt et ajout de celui-ci dans la collection
-		// $leClient = null;
-		// $leClient = $leClient->donneObjetClientDepuisNumero($unIdClient);
-		// $leGenre = null;
-		// $leSupport = null;
-		// $leSupport = $leSupport->donneObjetSupportDepuisNumero($unIdSupport);
-		// $this->tousLesEmprunts->ajouteUnEmprunt($sonCode, $uneDateEmprunt,$leClient,$leSupport);
-		// }

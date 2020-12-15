@@ -385,4 +385,13 @@ class accesBD
 			die("Erreur dans UpdateMDP : " . $requete->errorCode());
 		}
 	}
+
+	public function GetMotDePasse($leLoginClient)
+	{
+		$AncienMdp = $this->conn->prepare("SELECT pwd FROM client WHERE login= :loginClient;");
+		$AncienMdp->bindParam(':loginClient', $leLoginClient);
+		$AncienMdp->execute();
+		$return = $AncienMdp->fetch();
+		return $return['pwd'];
+	}
 }
