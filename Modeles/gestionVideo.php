@@ -334,6 +334,16 @@ class gestionVideo
 		$this->maBD->UpdateMotDePasseUser($nouveauMdp, $loginClient);
 	}
 
+	public function updateUnAdresseMail($newAdrMail, $loginClient)
+	{
+		$this->maBD->UpdateAdresseMail($newAdrMail, $loginClient);
+	}
+
+	public function updateUnNom($nouveauNom, $loginClient)
+	{
+		$this->maBD->UpdateNomUser($nouveauNom, $loginClient);
+	}
+
 	//Getteur
 	public function getMdp($loginClient)
 	{

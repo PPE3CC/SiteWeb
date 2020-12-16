@@ -94,8 +94,9 @@ class Controleur
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
-				$this->maVideotheque->getMdp($_SESSION['login_client']);
-				require 'Vues/modifCoord.php';
+				$ancienMdp = $this->maVideotheque->getMdp($_SESSION['login_client']);
+				require 'Vues/modifProfil.php';
+
 				break;
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
 			case 'nouveauLogin':
@@ -147,6 +148,8 @@ class Controleur
 					}
 				}
 				break;
+
+			case 'forgetmdp':
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -373,10 +373,9 @@ class accesBD
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
 		}
 	}
-
+	//--------------------------UPDATE----------------------------------------------
 	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
 	{
-		// echo " ----- accesBD";
 		$requete = $this->conn->prepare("UPDATE client SET pwd= :pwdClient WHERE login= :loginClient");
 		$requete->bindParam(':pwdClient', $leNouveauMdp);
 		$requete->bindParam(':loginClient', $leLoginClient);
@@ -385,12 +384,35 @@ class accesBD
 		}
 	}
 
+	public function UpdateAdresseMail($laNewAdresseMail, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET emailClient= :adMailClient WHERE login= :loginClient");
+		$requete->bindParam(':adMailClient', $laNewAdresseMail);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+	public function UpdateNomUser($leNouveauNom, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET nomClient= :nomClient WHERE login= :loginClient");
+		$requete->bindParam(':nomClient', $leNouveauNom);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+
+	//-------------------Getteur -------------------------------------------------------------------------
 	public function GetMotDePasse($leLoginClient)
 	{
 		$AncienMdp = $this->conn->prepare("SELECT pwd FROM client WHERE login= :loginClient;");
 		$AncienMdp->bindParam(':loginClient', $leLoginClient);
 		$AncienMdp->execute();
 		$return = $AncienMdp->fetch();
+		echo "connard";
 		return $return['pwd'];
 	}
 }
