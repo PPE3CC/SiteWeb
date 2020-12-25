@@ -349,4 +349,14 @@ class gestionVideo
 	{
 		return $this->maBD->GetMotDePasse($loginClient);
 	}
+
+	public function getMail($loginClient)
+	{
+		return $this->maBD->GetMail($loginClient);
+	}
+
+	// public function getLesClients()
+	// {
+	// 	return $this->maBD->GetLesClients();
+	// }
 }

@@ -72,6 +72,4 @@ if ((isset($_POST['nouveauMdp'])) && (isset($_POST["verifMdp"])) && (isset($_POS
     } else {
         echo "Erreur dans l'entrée de l'ancien mot de passe";
     }
-} else {
-    echo "Yousk2";
 }

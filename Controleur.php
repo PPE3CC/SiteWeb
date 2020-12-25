@@ -150,6 +150,10 @@ class Controleur
 				break;
 
 			case 'forgetmdp':
+				// if (isset($_POST['mailforgetpwd']) && isset($_POST['loginforgetpwd'])) {
+				$emailClient = $this->maVideotheque->getMail($_POST['loginforgetpwd']);
+				// }
+				require "Vues/forgetPassword.php";
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

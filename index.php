@@ -43,7 +43,9 @@ function premier_affichage()
                                             <input type='hidden' name='action' value='verifLogin'/>
                                             <input class='btn btn-secondary mx-auto' type='submit' value='Connexion'/>
                                         </form>
+                                        <a href='index.php?vue=compte&action=forgetmdp' class='text-secondary'>Mot de passe oublié ?</a>
                                     </td>
+                                 
                                     <td class='justify-content-center td-table'>
                                         <form href = 'index.php' method='post'>
                                             <input class='form-group' type='text' name='nomClient' placeholder='saisir votre nom'/><br>

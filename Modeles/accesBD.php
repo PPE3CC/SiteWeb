@@ -412,7 +412,23 @@ class accesBD
 		$AncienMdp->bindParam(':loginClient', $leLoginClient);
 		$AncienMdp->execute();
 		$return = $AncienMdp->fetch();
-		echo "connard";
 		return $return['pwd'];
 	}
+
+	public function GetMail($leLoginClient)
+	{
+		$mailClient = $this->conn->prepare("SELECT emailClient FROM client WHERE login= :loginClient;");
+		$mailClient->bindParam(':loginClient', $leLoginClient);
+		$mailClient->execute();
+		$return = $mailClient->fetch();
+		return $return['emailClient'];
+	}
+
+	// public function GetLesClients()
+	// {
+	// 	$lesClients = $this->conn->prepare("SELECT  emailClient FROM client where;");
+	// 	$lesClients->execute();
+	// 	$return[] = $lesClients->fetch();
+	// 	return $t;
+	// }
 }
