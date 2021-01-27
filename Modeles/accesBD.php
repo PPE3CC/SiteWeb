@@ -431,4 +431,22 @@ class accesBD
 	// 	$return[] = $lesClients->fetch();
 	// 	return $t;
 	// }
+	public function GetLaDateAbonnement($leLoginClient)
+	{
+		$dateAbonnement = $this->conn->prepare("SELECT dateAbonnementClient FROM client WHERE login= :loginClient;");
+		$dateAbonnement->bindParam(':loginClient', $leLoginClient);
+		$dateAbonnement->execute();
+		$return = $dateAbonnement->fetch();
+		return $return['dateAbonnementClient'];
+	}
+
+	public function GetLesEmprunts($leLoginClient)
+	{
+		echo $leLoginClient;
+		$lesEmprunts = $this->conn->prepare("SELECT support.titreSupport , support.realisateur FROM emprunt,support,client WHERE emprunt.idSupport=support.idSupport AND emprunt.idClient=client.idClient AND client.login= :loginClient GROUP BY titreSupport");
+		$lesEmprunts->bindParam(':loginClient', $leLoginClient);
+		$lesEmprunts->execute();
+		$return = $lesEmprunts->fetchAll();
+		return $return;
+	}
 }

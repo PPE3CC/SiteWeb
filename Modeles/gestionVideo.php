@@ -359,4 +359,15 @@ class gestionVideo
 	// {
 	// 	return $this->maBD->GetLesClients();
 	// }
+
+	public function getLaDateAbonnement($loginClient)
+	{
+		return $this->maBD->GetLaDateAbonnement($loginClient);
+	}
+
+	public function afficheLesEmprunts($loginClient)
+	{
+		$var = $this->maBD->GetLesEmprunts($loginClient);
+		return $var;
+	}
 }

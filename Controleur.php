@@ -86,9 +86,11 @@ class Controleur
 		switch ($action) {
 
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
-			case 'visualiser':
+			case 'visuEmprunt':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
-
+				$laDateAbonnement = $this->maVideotheque->getLaDateAbonnement($_SESSION['login_client']);
+				$lesEmprunts = $this->maVideotheque->afficheLesEmprunts($_SESSION['login_client']);
+				require 'Vues/profil.php';
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
