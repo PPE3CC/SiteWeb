@@ -1,26 +1,23 @@
-﻿<?php
+<?php
 session_start();
 include 'Controleur.php';
 
 function chargerPage()
 {
-	$monControleur = new Controleur();
-	$monControleur->afficheEntete();
-		if(isset($_POST['login']))
-		{
-				if ((isset($_POST['vue']))&& (isset($_POST['action'])))
-				{   $monControleur->affichePage($_POST['action'],$_POST['vue']);
-				}
-		}
-		else
-		{
-					premier_affichage();
-		}
-	$monControleur->affichePiedPage();
+    $monControleur = new Controleur();
+    $monControleur->afficheEntete();
+    if (isset($_POST['login'])) {
+        if ((isset($_POST['vue'])) && (isset($_POST['action']))) {
+            $monControleur->affichePage($_POST['action'], $_POST['vue']);
+        }
+    } else {
+        premier_affichage();
+    }
+    $monControleur->affichePiedPage();
 }
-	function premier_affichage()
-	{
-		/*echo "<div class = 'centrePage'>
+function premier_affichage()
+{
+    /*echo "<div class = 'centrePage'>
 				<table border=3 align=center>
 					<tr align=center>
 						<td>
@@ -54,7 +51,7 @@ function chargerPage()
 					</tr>
 				</table>
 			</div>";*/
-		echo "</nav>
+    echo "</nav>
                 <div class='container h-100'>
                     <div class='row h-100 justify-content-center align-items-center'>
                         <table class='table w-50'>
@@ -74,22 +71,42 @@ function chargerPage()
                                         </form>
                                     </td>
                                     <td class='justify-content-center td-table'>
-                                        <form href = 'index.php' method='post'>
-                                            <input class='form-group' type='text' name='nomClient' placeholder='saisir votre nom'/><br>
-                                            <input class='form-group' type='text' name='prenomClient' placeholder='Saisir votre prenom'/><br>
-                                            <input class='form-group' type='text' name='emailClient' placeholder='Saisir votre email'/><br>
-                                            <input class='form-group' type='date' name='dateAbonnementClient' placeholder='Date souhaitée d abonnement'/><br>
-                                            <input class='form-group' type='text' name='login' placeholder='Saisir votre login'/><br>
-                                            <input class='form-group' type='password' name='password' placeholder='Choisir un mot de passe'/><br>
-																						<input type=hidden name=vue value=compte>
-																						<input type=hidden name=action value=nouveauLogin>
+                                        <form id='creationCompte' method='post' role='form'>
+                                            <input class='form-group' type='text' id='nomClient' name='nomClient' placeholder='saisir votre nom'/><br>
+                                            <input class='form-group' type='text' id='prenomClient' name='prenomClient' placeholder='Saisir votre prenom'/><br>
+                                            <input class='form-group' type='text' id='emailClient' name='emailClient' placeholder='Saisir votre email'/><br>
+                                            <input class='form-group' type='date' id='dateAbonnementClient'  name='dateAbonnementClient' placeholder='Date souhaitée d abonnement'/><br>
+                                            <input class='form-group' type='text' id='login' name='login' placeholder='Saisir votre login'/><br>
+                                            <input class='form-group' type='password' id='password' name='password' placeholder='Choisir un mot de passe'/><br>
+											<input type=hidden name=vue value=compte>
+											<input type=hidden name=action value=nouveauLogin>
                                             <input class='btn btn-secondary' type='submit' value='Enregister'/>
                                         </form>
                                     </td>
                             </tbody>
                         </table>
                     </div>
-                </div>";
-	}
+                </div>
+                <div class='modal fade' id='ModalRetour' role='dialog' style='color:#000;'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                    <div class='modal-header'>
+                            <h4 class='modal-title'><span class='fas fa-info-circle'></span> INFORMATIONS</h4>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick='hd();'>
+                                  <span aria-hidden='true'>&times;</span>
+                            </button>
+                          </div>
+                           <div class='modal-body'>
+                            <div class='alert alert-info'>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-default' onclick='hdModalRetour();'>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>";
+}
 
-	chargerPage();
+chargerPage();

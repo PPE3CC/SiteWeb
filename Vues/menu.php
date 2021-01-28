@@ -1,4 +1,4 @@
-﻿<div class="navbar-collapse collapse w-100" id="navbar3">
+<div class="navbar-collapse collapse w-100" id="navbar3">
         <ul class="navbar-nav w-100">
             <li class="nav-item active">
                 <ul class="dropdown spec-bot">
