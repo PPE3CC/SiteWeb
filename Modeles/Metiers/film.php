@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include ('support.php');
 Class film extends support
 	{

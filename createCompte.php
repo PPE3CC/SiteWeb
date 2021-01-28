@@ -8,18 +8,20 @@ $email=$_POST['emailClient'];
 $dateAbonnement=$_POST['dateAbonnementClient'];
 $login=$_POST['login'];
 $password=$_POST['password'];
+$verifIdentifiant = false;
+$idExistant;
 // $verifIdentifiant=$maVideotheque->VerifIdentifiant($login);
 // if($verifIdentifiant==0)
 // {
     $hote = "localhost";
     $port = "";
-    $login = "root";
+    $loginBDD = "root";
     $passwd = "";
     $base = "videoppe3";
         try {
     
-            $conn = new PDO("mysql:dbname=$base;host=$hote", $login, $passwd);
-            
+            $conn = new PDO("mysql:dbname=$base;host=$hote", $loginBDD, $passwd);
+    if ()
     
     $requete = $conn->prepare("INSERT INTO CLIENT (nomClient, prenomClient, emailClient, dateAbonnementClient, login, pwd, actif) VALUES (?,?,?,?,?,?,?)");
     //définition de la requête SQL
