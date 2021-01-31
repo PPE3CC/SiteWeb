@@ -1,4 +1,4 @@
-﻿<div class="BasPage">
+<div class="BasPage">
 </div>	
 </BODY>
 </HTML>
