@@ -88,15 +88,15 @@ class Controleur
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
 			case 'visualiser':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
-				require 'Vues/construction.php';
+
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
-				require 'Vues/construction.php';
+				$ancienMdp = $this->maVideotheque->getMdp($_SESSION['login_client']);
+				require 'Vues/modifProfil.php';
 				break;
-
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
 			case 'nouveauLogin':
 				// ici il faut pouvoir recuperer un nouveau utilisateur
@@ -132,26 +132,43 @@ class Controleur
 				// ici il faut pouvoir vérifier un login un nouveau utilisateur
 				//Je récupère les login et password saisi et je verifie leur existancerequire
 				//pour cela je verifie dans le conteneurClient via la gestion.
-				$unLogin = $_GET['login'];
-				$unPassword = $_GET['password'];
-				$resultat = $this->maVideotheque->verifLogin($unLogin, $unPassword);
+				$_SESSION["login_client"] = $_POST['login'];
+				$unPassword = $_POST['password'];
+				$resultat = $this->maVideotheque->verifLogin($_SESSION["login_client"], $unPassword);
 				//si le client existe alors j'affiche le menu et la page visuGenre.php
 				if ($resultat == 1) {
 					require 'Vues/menu.php';
 					echo $this->maVideotheque->listeLesGenres();
 				} else {
-					// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
-					//des mauvais identifiants;
-					session_destroy();
-					echo "</nav>
-									<div class='container h-100'>
-										<div class='row h-100 justify-content-center align-items-center'>
-											<span class='text-white'>Identifiants incorrects</span>
-										</div>
-									</div>
-									<meta http-equiv='refresh' content='1;index.php'>";
+					if ($resultat == 2) {
+						echo "</nav>
+												<div class='container h-100'>
+					 								<div class='row h-100 justify-content-center align-items-center'>
+						 								<span class='text-white'>Votre compte n'est pas actif.</span>
+			  									</div>
+					 							</div>
+											<meta http-equiv='refresh' content='1;index.php'>";
+					} else {
+						// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
+						//des mauvais identifiants;
+						session_destroy();
+
+						echo "</nav>
+												<div class='container h-100'>
+					 								<div class='row h-100 justify-content-center align-items-center'>
+						 								<span class='text-white'>Identifiants incorrects</span>
+			  									</div>
+					 							</div>
+											<meta http-equiv='refresh' content='1;index.php'>";
+					}
 				}
 				break;
+
+			case 'forgetmdp':
+				// if (isset($_POST['mailforgetpwd']) && isset($_POST['loginforgetpwd'])) {
+				$emailClient = $this->maVideotheque->getMail($_POST['loginforgetpwd']);
+				// }
+				require "Vues/forgetPassword.php";
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

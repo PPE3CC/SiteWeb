@@ -92,9 +92,6 @@ class accesBD
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public function insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient)
 	{
-		//génération automatique de l'identifiant
-		$sonId = $this->donneProchainIdentifiant("client", "idClient");
-
 		$requete = $this->conn->prepare("INSERT INTO CLIENT (nomClient, prenomClient, emailClient, dateAbonnementClient, login, pwd, actif) VALUES (?,?,?,?,?,?,?)");
 		//définition de la requête SQL
 		$requete->bindValue(1, $unNomClient);
@@ -110,9 +107,6 @@ class accesBD
 			if (!$requete->execute()) {
 				die("Erreur dans insertClient : " . $requete->errorCode());
 			}
-
-		//retour de l'identifiant du nouveau tuple
-		return $sonId;
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//---------------------------CREATION DE LA REQUETE D'INSERTION DES GENRES------------------------------------------------------------------------------------------------------------------------------------------------
@@ -199,7 +193,7 @@ class accesBD
 		$requete = $this->conn->prepare("INSERT INTO saison (idSerie,idSaison,anneeSaison, nbrEpisodesPrevus) VALUES (?,?,?,?);");
 		$requete->bindValue(1, $unIdSerie);
 		$requete->bindValue(2, $sonId);
-		$requete->bindValue(3, $uneAnneSaison);
+		$requete->bindValue(3, $uneAnneeSaison);
 		$requete->bindValue(4, $unNbrEpisodesPrevus);
 
 		//exécution de la requête SQL
@@ -321,13 +315,13 @@ class accesBD
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UNE SAISON---------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EPISODE---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	private function donneProchainIdentifiantEpisode($uneTable, $unIdentifiantSerie, $unIdentifiantSaison)
 	{
 		//$prochainId[0]=0;
 		//définition de la requête SQL
-		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ", $uneTable, "WHERE IDSERIE = ", $unIdentifiantSerie, " AND IDSAISON =", $unIdSaison, ";");
+		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ", $uneTable, "WHERE IDSERIE = ", $unIdentifiantSerie, " AND IDSAISON =", $unIdentifiantSaison, ";");
 		echo $stringQuery;
 		$requete = $this->conn->prepare($stringQuery);
 		$requete->bindValue(1, $unIdentifiantSerie);
@@ -344,5 +338,55 @@ class accesBD
 		} else {
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
 		}
+	}
+	//--------------------------UPDATE----------------------------------------------
+	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET pwd= :pwdClient WHERE login= :loginClient");
+		$requete->bindParam(':pwdClient', $leNouveauMdp);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+	public function UpdateAdresseMail($laNewAdresseMail, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET emailClient= :adMailClient WHERE login= :loginClient");
+		$requete->bindParam(':adMailClient', $laNewAdresseMail);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+	public function UpdateNomUser($leNouveauNom, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET nomClient= :nomClient WHERE login= :loginClient");
+		$requete->bindParam(':nomClient', $leNouveauNom);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+
+	//-------------------Getteur -------------------------------------------------------------------------
+	public function GetMotDePasse($leLoginClient)
+	{
+		$AncienMdp = $this->conn->prepare("SELECT pwd FROM client WHERE login= :loginClient;");
+		$AncienMdp->bindParam(':loginClient', $leLoginClient);
+		$AncienMdp->execute();
+		$return = $AncienMdp->fetch();
+		return $return['pwd'];
+	}
+
+	public function GetMail($leLoginClient)
+	{
+		$mailClient = $this->conn->prepare("SELECT emailClient FROM client WHERE login= :loginClient;");
+		$mailClient->bindParam(':loginClient', $leLoginClient);
+		$mailClient->execute();
+		$return = $mailClient->fetch();
+		return $return['emailClient'];
 	}
 }
