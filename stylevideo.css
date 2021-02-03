@@ -6,8 +6,9 @@
 body
 {
    margin-top: -24px !important;
-   /* background-color: rgb(77, 77, 77)!important; */
-   /* background:
+   background-color: rgb(148, 179, 223)!important;
+
+    /* background:
     repeating-linear-gradient(190deg, rgba(255, 0, 0, 0.5) 40px,
         rgba(255, 153, 0, 0.5) 80px, rgba(255, 255, 0, 0.5) 120px,
         rgba(0, 255, 0, 0.5) 160px, rgba(0, 0, 255, 0.5) 200px,
@@ -22,8 +23,9 @@ body
         yellow 150px, green 200px, blue 250px,
         indigo 300px, violet 350px, red 370px); */
 
-    background: conic-gradient(at -2% 100%, grey 5%, rgb(136, 1, 1) 30%);
+    /* background: conic-gradient(at -2% 100%, grey 5%, rgb(136, 1, 1) 30%); */
 }
+
 
 /* body h1{
     color: white;
@@ -78,6 +80,12 @@ body p {
 }
 
 .head-table-genre
+{
+    text-align: center;
+    border-top: none !important;
+}
+
+.head-table-emprunt
 {
     text-align: center;
     border-top: none !important;

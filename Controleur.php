@@ -90,7 +90,7 @@ class Controleur
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
 				$laDateAbonnement = $this->maVideotheque->getLaDateAbonnement($_SESSION['login_client']);
 				$lesEmprunts = $this->maVideotheque->afficheLesEmprunts($_SESSION['login_client']);
-				require 'Vues/profil.php';
+				require 'Vues/profilEmprunt.php';
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ class Controleur
 				//CAS visualisation de tous les films-------------------------------------------------------------------------------------------------
 			case "visualiser":
 				//ici il faut pouvoir visualiser l'ensemble des films
-				require 'Vues/construction.php';
+				require 'Vues/tousGenres.php';
 				break;
 		}
 	}

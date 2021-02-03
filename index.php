@@ -41,6 +41,8 @@ function premier_affichage()
                                             <input class='form-group' type='password' placeholder='Mot de passe' name='password'/><br>
                                             <input type='hidden' name='vue' value='compte'>
                                             <input type='hidden' name='action' value='verifLogin'/>
+                                            <input type=hidden name=vue value=film>
+                                            <input type=hidden name=action value=visualiser>
                                             <input class='btn btn-secondary mx-auto' type='submit' value='Connexion'/>
                                         </form>
                                         <a href='index.php?vue=compte&action=forgetmdp' class='text-secondary'>Mot de passe oublié ?</a>

@@ -32,12 +32,12 @@ class conteneurGenre
                     <div class='row h-100 justify-content-center align-items-center'>
                         <table class='table w-50'>
                             <thead>
-                                <td class='head-table-genre text-white'>Identifiant genre</td>
-                                <td class='head-table-genre text-white'>Genre</td>
+                                <td class='head-table-genre text-white'><h3>Les Genres</h3></td>
                             </thead>
                             <tbody>";
 		foreach ($this->lesGenres as $unGenre) {
-			$liste = $liste . '<tr><td class="text-white td-table">' . $unGenre->getIdGenre() . '</td><td class="text-white td-table">' . $unGenre->getLibelleGenre() . '</td></tr>';
+			$liste = $liste .
+				'</td><td class="text-white td-table">' . $unGenre->getLibelleGenre() . '</td></tr>';
 		}
 		$liste = $liste . "</tbody></table></div></div>";
 		return $liste;

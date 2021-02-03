@@ -442,7 +442,6 @@ class accesBD
 
 	public function GetLesEmprunts($leLoginClient)
 	{
-		echo $leLoginClient;
 		$lesEmprunts = $this->conn->prepare("SELECT support.titreSupport , support.realisateur FROM emprunt,support,client WHERE emprunt.idSupport=support.idSupport AND emprunt.idClient=client.idClient AND client.login= :loginClient GROUP BY titreSupport");
 		$lesEmprunts->bindParam(':loginClient', $leLoginClient);
 		$lesEmprunts->execute();

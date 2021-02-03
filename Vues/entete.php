@@ -1,6 +1,6 @@
 ﻿<head>
 	<title>
-		Ma Vidéothéque
+		NousTubes
 	</title>
 	<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
 	<link rel='stylesheet' href='stylevideo.css' type='text/css' />
@@ -15,9 +15,9 @@
 		if (isset($_SESSION['login_client'])) {
 			echo "	<body>
 		<nav class='navbar navbar-expand-lg navbar-light '>
-			<a href='/'>
+			<a href='http://localhost/SiteWeb/index.php'>
 				<div class='icon'>
-					<img src='logo-vidéothèque.png' alt='Videotheque' style='width: 5rem'>
+					<img src='logo-vidéothèque.png' alt='Videotheque' style='width: 2.5rem'>
 				</div>
 			</a>
 			<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -32,7 +32,7 @@
 					</li>
 					<li class='nav-item active'>
 						<ul class='dropdown'>
-							<button class='btn btn-secondary' type='button' data-toggle='dropdown'>Les Films<span class='caret'></span></button>
+							<button class='buttonPerso btn btn-secondary ' type='button' data-toggle='dropdown'>Les Films<span class='caret'></span></button>
 							<ul class='dropdown-menu'>
 								<li><a href='#'>Voir tous les films</a></li>
 							</ul>
@@ -68,7 +68,7 @@
 			<nav class='navbar navbar-expand-lg navbar-light '>
 				<a href='/'>
 					<div class='icon'>
-						<img src='logo-vidéothèque.png' alt='Videotheque' style='width: 5rem'>
+						<img src='logo-vidéothèque.png' alt='Videotheque' style='width: 2.5rem'>
 					</div>
 				</a>
 				<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
