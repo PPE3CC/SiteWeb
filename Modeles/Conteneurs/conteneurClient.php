@@ -84,10 +84,6 @@ class conteneurClient
 			$testPassword = trim($iClient->current()->getPwdClient());
 			$actif = trim($iClient->current()->getActif());
 			//On test avec la fonction strcmp
-			echo $iClient->current()->getIdClient() . "<br>";
-			echo $iClient->current()->getNomClient();
-			echo $iClient->current()->getDateAbonnementClient();
-			echo $testLogin . "---" . $testPassword . "<br>";
 			if (strcmp($unPassword, $testPassword) === 0 && strcmp($unPassword, $testPassword) === 0) {
 				//maj du booléen
 				$trouve = 1;

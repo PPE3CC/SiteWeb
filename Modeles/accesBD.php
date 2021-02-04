@@ -389,4 +389,13 @@ class accesBD
 		$return = $mailClient->fetch();
 		return $return['emailClient'];
 	}
+
+
+	public function GetLesNomsFilms()
+	{
+		$nomsFilms = $this->conn->prepare("SELECT titreSupport FROM support");
+		$nomsFilms->execute();
+		$return = $nomsFilms->fetchAll();
+		return $return;
+	}
 }

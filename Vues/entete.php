@@ -34,17 +34,10 @@
 					</li>
 					<li class='nav-item active'>
 						<ul class='dropdown'>
-							<button class='btn btn-secondary' type='button' data-toggle='dropdown'>Les Films<span class='caret'></span></button>
+							<button class='btn btn-secondary' type='button' data-toggle='dropdown'>Emprunts<span class='caret'></span></button>
 							<ul class='dropdown-menu'>
-								<li><a href='#'>Voir tous les films</a></li>
-							</ul>
-						</ul>
-					</li>
-					<li class='nav-item active'>
-						<ul class='dropdown'>
-							<button class='btn btn-secondary' type='button' data-toggle='dropdown'>Les Séries<span class='caret'></span></button>
-							<ul class='dropdown-menu'>
-								<li><a href='#'>Voir toutes les séries</a></li>
+							<li><a href='index.php?vue=compte&action=ajoutEmprunt'>Effectuer un emprunt</a></li>
+								<li><a href='index.php?vue=compte&action=visuEmprunt'>Visualiser mes emprunts</a></li>
 							</ul>
 						</ul>
 					</li>
@@ -56,7 +49,7 @@
 							<ul class='dropdown-menu'>
 								<li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li>
 								<li><a href='index.php?vue=compte&action=modifier'>Modifier mon profil</a></li>
-								<li><a href='index.php?vue=compte&action=visuEmprunt'>Visualiser mes Emprunts</a></li>
+								
 								<li><a href='index.php?action=acceuil'>Se déconnecter</a></li>
 							</ul>
 						</ul>

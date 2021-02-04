@@ -86,7 +86,13 @@ class Controleur
 		switch ($action) {
 
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
-			case 'visualiser':
+			case 'ajoutEmprunt':
+				//ici il faut pouvoir avoir accès au information de l'internaute connecté
+				$lesFilms = $this->maVideotheque->getLesNomsFilms();
+				require "Vues/ajoutEmprunt.php";
+
+				break;
+			case 'visuEmpru':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
 
 				break;
@@ -138,7 +144,6 @@ class Controleur
 				$resultat = $this->maVideotheque->verifLogin($ceLogin, $unPassword);
 				//si le client existe alors j'affiche le menu et la page visuGenre.php
 				if ($resultat == 1) {
-					require 'Vues/menu.php';
 					echo $this->maVideotheque->listeLesGenres();
 				} else {
 					if ($resultat == 2) {

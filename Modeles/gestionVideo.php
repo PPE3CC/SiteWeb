@@ -39,7 +39,7 @@ class gestionVideo
 		$this->chargeLesClients();
 		$this->chargeLesGenres();
 		$this->chargeLesSupports();
-		$this->chargeLesFilms();
+		// $this->chargeLesFilms();
 		$this->chargeLesSeries();
 		$this->chargeLesSaisons();
 		$this->chargeLesEpisodes();
@@ -82,18 +82,18 @@ class gestionVideo
 		}
 	}
 	//METHODE CHARGEANT TOUS LES FILMS-----------------------------------------------------------------------------------
-	private function chargeLesFilms()
-	{
-		$resultat = $this->maBD->chargement('film');
-		$nb = 0;
-		while ($nb < sizeof($resultat)) {
-			$leSupport = $this->tousLesSupports->donneObjetSupportDepuisNumero($resultat[$nb][0]);
-			$leGenre = $leSupport->getLeGenreDeSupport();
-			$leGenre = $this->tousLesGenres->donneObjetGenreDepuisNumero($leGenre->getIdGenre());
-			$this->tousLesFilms->ajouteUnFilm($resultat[$nb][0], $leSupport->getTitreSupport(), $leSupport->getRealisateurSupport(), $leSupport->getImageSupport(), $leGenre, $resultat[$nb][1]);
-			$nb++;
-		}
-	}
+	// private function chargeLesFilms()
+	// {
+	// 	$resultat = $this->maBD->chargement('film');
+	// 	$nb = 0;
+	// 	while ($nb < sizeof($resultat)) {
+	// 		$leSupport = $this->tousLesSupports->donneObjetSupportDepuisNumero($resultat[$nb][0]);
+	// 		$leGenre = $leSupport->getLeGenreDeSupport();
+	// 		$leGenre = $this->tousLesGenres->donneObjetGenreDepuisNumero($leGenre->getIdGenre());
+	// 		$this->tousLesFilms->ajouteUnFilm($resultat[$nb][0], $leSupport->getTitreSupport(), $leSupport->getRealisateurSupport(), $leSupport->getImageSupport(), $leGenre, $resultat[$nb][1]);
+	// 		$nb++;
+	// 	}
+	// }
 
 	//METHODE CHARGEANT TOUTES LES SERIES-----------------------------------------------------------------------------------
 	private function chargeLesSeries()
@@ -354,8 +354,8 @@ class gestionVideo
 		return $this->maBD->GetMail($loginClient);
 	}
 
-	// public function getLesClients()
-	// {
-	// 	return $this->maBD->GetLesClients();
-	// }
+	public function getLesNomsFilms()
+	{
+		return $this->maBD->GetLesNomsFilms();
+	}
 }
