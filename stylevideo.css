@@ -22,7 +22,7 @@ body
         yellow 150px, green 200px, blue 250px,
         indigo 300px, violet 350px, red 370px); */
 
-    background: conic-gradient(at -2% 100%, grey 5%, rgb(136, 1, 1) 30%);
+    /* background: conic-gradient(at -2% 100%, grey 5%, rgb(136, 1, 1) 30%); */
 }
 
 /* body h1{
@@ -100,4 +100,12 @@ body p {
 
 .a:hover{
     text-decoration: none;
+}
+
+.table-bordered thead th{
+    background-color: transparent;
+}
+
+table{
+    margin-left: 25%;
 }

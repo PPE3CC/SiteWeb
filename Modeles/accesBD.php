@@ -321,11 +321,7 @@ class accesBD
 	{
 		//$prochainId[0]=0;
 		//définition de la requête SQL
-<<<<<<< Updated upstream
 		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ", $uneTable, "WHERE IDSERIE = ", $unIdentifiantSerie, " AND IDSAISON =", $unIdentifiantSaison, ";");
-=======
-		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ",$uneTable,"WHERE IDSERIE = ",$unIdentifiantSerie," AND IDSAISON =",$unIdentifiantSaison,";");
->>>>>>> Stashed changes
 		echo $stringQuery;
 		$requete = $this->conn->prepare($stringQuery);
 		$requete->bindValue(1, $unIdentifiantSerie);
@@ -342,37 +338,33 @@ class accesBD
 		} else {
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
 		}
-
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EMPRUNT---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function donneProchainIdentifiantEmprunt($uneTable,$unIdentifiantClient, $unIdentifiantEmprunt)
+	private function donneProchainIdentifiantEmprunt($uneTable, $unIdentifiantClient, $unIdentifiantEmprunt)
 	{
-	//$prochainId[0]=0;
-	//définition de la requête SQL
-	$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ",$uneTable,"WHERE IDCLIENT = ",$unIdentifiantClient," AND IDEMPRUNT =",$unIdentifiantEmprunt,";");
-	echo $stringQuery;
-	$requete = $this->conn->prepare($stringQuery);
-	$requete->bindValue(1,$unIdentifiantClient);
+		//$prochainId[0]=0;
+		//définition de la requête SQL
+		$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ", $uneTable, "WHERE IDCLIENT = ", $unIdentifiantClient, " AND IDEMPRUNT =", $unIdentifiantEmprunt, ";");
+		echo $stringQuery;
+		$requete = $this->conn->prepare($stringQuery);
+		$requete->bindValue(1, $unIdentifiantClient);
 
-	//exécution de la requête SQL
-	if($requete->execute())
-	{
-		$nbEmprunt=0;
-		//Retourne le prochain identifiant
-		while($row = $requete->fetch(PDO::FETCH_NUM))
-		{
+		//exécution de la requête SQL
+		if ($requete->execute()) {
+			$nbEmprunt = 0;
+			//Retourne le prochain identifiant
+			while ($row = $requete->fetch(PDO::FETCH_NUM)) {
 
-			$nbEmprunt = $row[0];
+				$nbEmprunt = $row[0];
+			}
+			return $nbEmprunt + 1;
+		} else {
+			die('Erreur sur donneProchainIdentifiantEmprunt : ' + $requete->errorCode());
 		}
-		return $nbEmprunt+1;
 	}
-	else
-	{
-		die('Erreur sur donneProchainIdentifiantEmprunt : '+$requete->errorCode());
-	}
-	}
-	}
+
 	//--------------------------UPDATE----------------------------------------------
 	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
 	{
@@ -427,7 +419,7 @@ class accesBD
 
 	public function GetLesNomsFilms()
 	{
-		$nomsFilms = $this->conn->prepare("SELECT titreSupport FROM support");
+		$nomsFilms = $this->conn->prepare("SELECT idSupport ,titreSupport FROM support");
 		$nomsFilms->execute();
 		$return = $nomsFilms->fetchAll();
 		return $return;
