@@ -1,4 +1,4 @@
-<head>
+﻿<head>
 	<title>
 		Ma Vidéothéque
 	</title>
@@ -10,6 +10,7 @@
 	<script src="JS/jquery-3.4.1.min"> </script>
 	<script src="JS/bootstrap.min.js"></script>
 	<script src="JS/ajaxa.js"></script>
+	<script src="sass source/stylesheets/index.scss build/stylesheets/index.css"></script>
 
 	<head>
 		<?php
