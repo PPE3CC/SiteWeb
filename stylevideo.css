@@ -1,10 +1,20 @@
-﻿.spec-bot
+﻿html{
+	background-color: #FFFCF9;
+}
+
+.spec-bot
 {
     margin-bottom: 1rem !important;
 }
 
+/* FFFCF9
+	FF6978
+	340068
+*/
+
 body
 {
+
    margin-top: -24px !important;
    /* background-color: rgb(77, 77, 77)!important; */
    /* background:
@@ -25,50 +35,20 @@ body
     /* background: conic-gradient(at -2% 100%, grey 5%, rgb(136, 1, 1) 30%); */
 }
 
-/* body h1{
-    color: white;
-}
-
-body p {
-    color: white;
-} */
 
   li a{
-    color : red;
+    color : #FF6978;
 }
 
-.avatar
-{
-    width: 30px;
-    height: 30px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: -5px;
-    border-radius: 50%;
-}
- 
-.btn-avatar
-{
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0 !important;
+li a:hover{
+	text-decoration: none;
+	color : #340068;
 }
 
-.icon{
-    width: 50%;
-    margin: 0 2rem 0 0;
-}
-.pos-avatar
-{
-    width: 50px;
-    margin-right: 60px !important;
-    margin-bottom: 17px !important;
-}
 
-.dropdown
-{
-    padding-left: 0 !important;
-    padding-right: 40px !important;
+
+.dropdown{
+	display: flex;
 }
 
 .head-table-connexion
@@ -90,7 +70,7 @@ body p {
 
 .text-red
 {
-    color: red;
+    color: #FF6978;
 }
 
 .text-small
@@ -110,5 +90,36 @@ table{
     margin-left: 25%;
 }
 
+.color-nav-bar{
+	background-color: #340068;
+}
+
+.btn-design{
+	background-color: #FF6978;
+	color : #FFFCF9;
+	text-decoration: none;
+	padding: 0.5rem;
+	border-radius: 15px;
+	border: solid #FF6978;
+	transition: 1.2s
+
+}
+
+.btn-design:hover{
+	text-decoration: none;
+	color: #340068;
+	background-color: #FFFCF9;
+	transition: 1.2s;
+	border-color: #340068;
+	border: solid;
+}
+
+.navbar-positionnement{
+	margin-top: 1rem;
+}
+
+.test{
+	align-content: space-between;
+}
 /*TESTETSTSTSETSET */
 

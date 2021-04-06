@@ -25,7 +25,7 @@ function chargerPage()
 }
 function premier_affichage()
 {
-    echo "</nav>
+    echo "
                 <div class='container'>
                     <div class='row justify-content-center align-items-center'>
                         <table class='table w-50'>

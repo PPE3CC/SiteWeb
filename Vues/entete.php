@@ -15,46 +15,37 @@
 	<head>
 		<?php
 
-		if (isset($_SESSION['login_client'])) {
+		if (isset($_SESSION['login_client']) || isset($_POST['login'])) {
 			echo "	<body>
-		<nav class='navbar navbar-expand-lg navbar-light '>
-			<a href='/'>
-				<div class='icon'>
-					<img src='logo-vidéothèque.png' alt='Videotheque' style='width: 5rem'>
-				</div>
-			</a>
+		<nav class='navbar navbar-expand-lg color-nav-bar'>
 			<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
 				<span class='navbar-toggler-icon'></span>
 			</button>
-			<div class='collapse navbar-collapse' id='navbarSupportedContent'>
-				<ul class='navbar-nav mr-auto'>
+			<div class='row navbar-positionnement' id='navbarSupportedContent'>
+				<ul class='navbar-nav'>
 					<li class='nav-item active'>
 						<ul class='dropdown'>
-							<a class='btn btn-secondary' href='index.php'>Accueil <span class='sr-only'>(current)</span></a>
+							<a class='btn-design' href='index.php'>Accueil </a>
 						</ul>
 					</li>
 					<li class='nav-item active'>
 						<ul class='dropdown'>
-							<button class='btn btn-secondary' type='button' data-toggle='dropdown'>Emprunts<span class='caret'></span></button>
+							<button class='btn-design' type='button' data-toggle='dropdown'>Emprunts</button>
 							<ul class='dropdown-menu'>
-							<li><a href='index.php?vue=compte&action=ajoutEmprunt'>Effectuer un emprunt</a></li>
+								<li><a href='index.php?vue=compte&action=ajoutEmprunt'>Effectuer un emprunt</a></li>
 								<li><a href='index.php?vue=compte&action=visuEmprunt'>Visualiser mes emprunts</a></li>
 							</ul>
 						</ul>
 					</li>
 				</ul>
-				<ul class='nav navbar-nav ml-auto pos-avatar justify-content-end'>
-					<li class='nav-item active'>
-						<ul class='dropdown'>
-							<button class='btn btn-secondary dropdown-toggle btn-avatar' type='button' data-toggle='dropdown'><img class='avatar' src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'><span class='caret'></span></button>
-							<ul class='dropdown-menu'>
-								<li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li>
-								<li><a href='index.php?vue=compte&action=modifier'>Modifier mon profil</a></li>
-								
-								<li><a href='index.php?action=acceuil'>Se déconnecter</a></li>
-							</ul>
-						</ul>
-					</li>
+				<ul class='dropdown test '>
+					<button class='btn-design' type='button' data-toggle='dropdown'>Profil</button>
+					<ul class='dropdown-menu'>
+						<li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li>
+						<li><a href='index.php?vue=compte&action=modifier'>Modifier mon profil</a></li>
+						
+						<li><a href='index.php?action=acceuil'>Se déconnecter</a></li>
+					</ul>
 				</ul>
 			</div>
 		</nav>

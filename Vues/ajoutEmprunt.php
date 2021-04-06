@@ -22,7 +22,7 @@
 
             echo '<tr>';
             echo '<th scope="col" class="table-active">' . $leFilm[1] . '</th>';
-            echo '<th scope="col" class="table-light" ><button type="button" class="ajoutDuFilm btn btn-secondary" 
+            echo '<th scope="col" class="table-light" ><button type="button" class="ajoutDuFilm btn-design" 
             value=idfilm=' . $leFilm["idSupport"] . '&idclient=' . $_SESSION['login_client'] . '>
             Emprunter</button></th>';
             echo '</tr>';
