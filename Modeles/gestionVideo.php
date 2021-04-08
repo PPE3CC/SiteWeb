@@ -326,4 +326,9 @@ class gestionVideo
 	{
 		return $this->tousLesEpisodes->lesEpisodesAuFormatHTML();
 	}
+
+	public function envoielesEmprunt($unIdClient)
+	{
+		return $this->maBD->getLesEmprunts($unIdClient);
+	}
 }

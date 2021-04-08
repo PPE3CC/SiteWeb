@@ -92,15 +92,15 @@ class Controleur
 				break;
 
 				//CAS visualisation 
-			case 'visualiserEmprunts':
+			case 'visuEmprunt':
 				//ici il faut pouvoir afficher la liste des emprunts pour un utilisateur
-				require 'Vues/emprunt.php';
+				require 'Vues/menu.php';
+				require 'Vues/emprunts.php';
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
-				echo "toto";
 				require 'Vues/menu.php';
 				require 'Vues/modifCord.php';
 				break;

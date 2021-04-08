@@ -399,4 +399,15 @@ class accesBD
 			}
 		}
 	}
+
+	function getLesEmprunts($unIdClient)
+	{
+		$stringQuery = $this->specialCase("SELECT * FROM Emprunt WHERE", $unIdClient, ";");
+		$requete = $this->conn->prepare($stringQuery);
+		//exécution de la requête SQL
+		if ($requete->execute()) {
+		} else {
+			die('Erreur sur GetLesEmprunts : ' + $requete->errorCode());
+		}
+	}
 }

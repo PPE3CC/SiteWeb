@@ -2,6 +2,6 @@
 
 <body>
     <?php
-    echo $this->maVideotheque->lesEmpruntsAuFormatHTML()
+    echo $this->maVideotheque->envoielesEmprunt($_SESSION["login_client"])
     ?>
 </body>
