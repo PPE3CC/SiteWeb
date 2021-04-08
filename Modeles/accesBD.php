@@ -355,11 +355,7 @@ class accesBD
 	{
 		//$prochainId[0]=0;
 		//définition de la requête SQL
-<<<<<<< Updated upstream
 		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ", $uneTable, "WHERE IDSERIE = ", $unIdentifiantSerie, " AND IDSAISON =", $unIdentifiantSaison, ";");
-=======
-		$stringQuery = $this->specialCase("SELECT MAX(NUMEPISODE) FROM ",$uneTable,"WHERE IDSERIE = ",$unIdentifiantSerie," AND IDSAISON =",$unIdentifiantSaison,";");
->>>>>>> Stashed changes
 		echo $stringQuery;
 		$requete = $this->conn->prepare($stringQuery);
 		$requete->bindValue(1, $unIdentifiantSerie);
@@ -377,34 +373,30 @@ class accesBD
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
 		}
 
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EMPRUNT---------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function donneProchainIdentifiantEmprunt($uneTable,$unIdentifiantClient, $unIdentifiantEmprunt)
-	{
-	//$prochainId[0]=0;
-	//définition de la requête SQL
-	$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ",$uneTable,"WHERE IDCLIENT = ",$unIdentifiantClient," AND IDEMPRUNT =",$unIdentifiantEmprunt,";");
-	echo $stringQuery;
-	$requete = $this->conn->prepare($stringQuery);
-	$requete->bindValue(1,$unIdentifiantClient);
-
-	//exécution de la requête SQL
-	if($requete->execute())
-	{
-		$nbEmprunt=0;
-		//Retourne le prochain identifiant
-		while($row = $requete->fetch(PDO::FETCH_NUM))
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EMPRUNT---------------------------------------------------------------------------------------------------------------------------------------------------------------
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		function donneProchainIdentifiantEmprunt($uneTable, $unIdentifiantClient, $unIdentifiantEmprunt)
 		{
+			//$prochainId[0]=0;
+			//définition de la requête SQL
+			$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ", $uneTable, "WHERE IDCLIENT = ", $unIdentifiantClient, " AND IDEMPRUNT =", $unIdentifiantEmprunt, ";");
+			echo $stringQuery;
+			$requete = $this->conn->prepare($stringQuery);
+			$requete->bindValue(1, $unIdentifiantClient);
 
-			$nbEmprunt = $row[0];
+			//exécution de la requête SQL
+			if ($requete->execute()) {
+				$nbEmprunt = 0;
+				//Retourne le prochain identifiant
+				while ($row = $requete->fetch(PDO::FETCH_NUM)) {
+
+					$nbEmprunt = $row[0];
+				}
+				return $nbEmprunt + 1;
+			} else {
+				die('Erreur sur donneProchainIdentifiantEmprunt : ' + $requete->errorCode());
+			}
 		}
-		return $nbEmprunt+1;
-	}
-	else
-	{
-		die('Erreur sur donneProchainIdentifiantEmprunt : '+$requete->errorCode());
-	}
-	}
 	}
 }
