@@ -1,5 +1,4 @@
 <?php
-
 class accesBD
 {
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,28 +92,21 @@ class accesBD
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public function insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient)
 	{
-		//génération automatique de l'identifiant
-		$sonId = $this->donneProchainIdentifiant("client", "idClient");
-
-		$requete = $this->conn->prepare("INSERT INTO CLIENT (idClient ,nomClient, prenomClient, emailClient, dateAbonnementClient, login, pwd, actif) VALUES (?,?,?,?,?,?,?,?)");
+		$requete = $this->conn->prepare("INSERT INTO CLIENT (nomClient, prenomClient, emailClient, dateAbonnementClient, login, pwd, actif) VALUES (?,?,?,?,?,?,?)");
 		//définition de la requête SQL
-		$requete->bindValue(1, $sonId);
-		$requete->bindValue(2, $unNomClient);
-		$requete->bindValue(3, $unPrenomClient);
-		$requete->bindValue(4, $unEmailClient);
-		$requete->bindValue(5, $uneDateAbonnement);
-		$requete->bindValue(6, $unLoginClient);
-		$requete->bindValue(7, $unPwdClient);
-		$requete->bindValue(8, 0);
+		$requete->bindValue(1, $unNomClient);
+		$requete->bindValue(2, $unPrenomClient);
+		$requete->bindValue(3, $unEmailClient);
+		$requete->bindValue(4, $uneDateAbonnement);
+		$requete->bindValue(5, $unLoginClient);
+		$requete->bindValue(6, $unPwdClient);
+		$requete->bindValue(7, 0);
 
-
-		//exécution de la requête SQL
-		if (!$requete->execute()) {
-			die("Erreur dans insertClient : " . $requete->errorCode());
-		}
-
-		//retour de l'identifiant du nouveau tuple
-		return $sonId;
+		if ($requete)
+			//exécution de la requête SQL
+			if (!$requete->execute()) {
+				die("Erreur dans insertClient : " . $requete->errorCode());
+			}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//---------------------------CREATION DE LA REQUETE D'INSERTION DES GENRES------------------------------------------------------------------------------------------------------------------------------------------------
@@ -201,7 +193,7 @@ class accesBD
 		$requete = $this->conn->prepare("INSERT INTO saison (idSerie,idSaison,anneeSaison, nbrEpisodesPrevus) VALUES (?,?,?,?);");
 		$requete->bindValue(1, $unIdSerie);
 		$requete->bindValue(2, $sonId);
-		$requete->bindValue(3, $uneAnneSaison);
+		$requete->bindValue(3, $uneAnneeSaison);
 		$requete->bindValue(4, $unNbrEpisodesPrevus);
 
 		//exécution de la requête SQL
@@ -297,32 +289,6 @@ class accesBD
 		return $stringQuery . ";";
 	}
 
-
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT---------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function donneProchainIdentifiant($uneTable, $unIdentifiant)
-	{
-		//$prochainId[0]=0;
-		//définition de la requête SQL
-		$stringQuery = $this->specialCase("SELECT * FROM ", $uneTable);
-		//echo $stringQuery
-		$requete = $this->conn->prepare($stringQuery);
-		$requete->bindValue(1, $unIdentifiant);
-
-		//exécution de la requête SQL
-		if ($requete->execute()) {
-			$nb = 0;
-			//Retourne le prochain identifiant
-			while ($row = $requete->fetch(PDO::FETCH_NUM)) {
-
-				$nb = $row[0];
-			}
-			return $nb + 1;
-		} else {
-			die('Erreur sur donneProchainIdentifiant : ' + $requete->errorCode());
-		}
-	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UNE SAISON---------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -372,42 +338,90 @@ class accesBD
 		} else {
 			die('Erreur sur donneProchainIdentifiantEpisode : ' + $requete->errorCode());
 		}
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EMPRUNT---------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	private function donneProchainIdentifiantEmprunt($uneTable, $unIdentifiantClient, $unIdentifiantEmprunt)
+	{
+		//$prochainId[0]=0;
+		//définition de la requête SQL
+		$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ", $uneTable, "WHERE IDCLIENT = ", $unIdentifiantClient, " AND IDEMPRUNT =", $unIdentifiantEmprunt, ";");
+		echo $stringQuery;
+		$requete = $this->conn->prepare($stringQuery);
+		$requete->bindValue(1, $unIdentifiantClient);
 
-		//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		//-----------------------------DONNE LE PROCHAIN INDENTIFIANT D'UN EMPRUNT---------------------------------------------------------------------------------------------------------------------------------------------------------------
-		//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		function donneProchainIdentifiantEmprunt($uneTable, $unIdentifiantClient, $unIdentifiantEmprunt)
-		{
-			//$prochainId[0]=0;
-			//définition de la requête SQL
-			$stringQuery = $this->specialCase("SELECT MAX(NUMEMPRUNT) FROM ", $uneTable, "WHERE IDCLIENT = ", $unIdentifiantClient, " AND IDEMPRUNT =", $unIdentifiantEmprunt, ";");
-			echo $stringQuery;
-			$requete = $this->conn->prepare($stringQuery);
-			$requete->bindValue(1, $unIdentifiantClient);
+		//exécution de la requête SQL
+		if ($requete->execute()) {
+			$nbEmprunt = 0;
+			//Retourne le prochain identifiant
+			while ($row = $requete->fetch(PDO::FETCH_NUM)) {
 
-			//exécution de la requête SQL
-			if ($requete->execute()) {
-				$nbEmprunt = 0;
-				//Retourne le prochain identifiant
-				while ($row = $requete->fetch(PDO::FETCH_NUM)) {
-
-					$nbEmprunt = $row[0];
-				}
-				return $nbEmprunt + 1;
-			} else {
-				die('Erreur sur donneProchainIdentifiantEmprunt : ' + $requete->errorCode());
+				$nbEmprunt = $row[0];
 			}
+			return $nbEmprunt + 1;
+		} else {
+			die('Erreur sur donneProchainIdentifiantEmprunt : ' + $requete->errorCode());
 		}
 	}
 
-	function getLesEmprunts($unIdClient)
+	//--------------------------UPDATE----------------------------------------------
+	public function UpdateMotDePasseUser($leNouveauMdp, $leLoginClient)
 	{
-		$stringQuery = $this->specialCase("SELECT * FROM Emprunt WHERE", $unIdClient, ";");
-		$requete = $this->conn->prepare($stringQuery);
-		//exécution de la requête SQL
-		if ($requete->execute()) {
-		} else {
-			die('Erreur sur GetLesEmprunts : ' + $requete->errorCode());
+		$requete = $this->conn->prepare("UPDATE client SET pwd= :pwdClient WHERE login= :loginClient");
+		$requete->bindParam(':pwdClient', $leNouveauMdp);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
 		}
+	}
+
+	public function UpdateAdresseMail($laNewAdresseMail, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET emailClient= :adMailClient WHERE login= :loginClient");
+		$requete->bindParam(':adMailClient', $laNewAdresseMail);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+	public function UpdateNomUser($leNouveauNom, $leLoginClient)
+	{
+		$requete = $this->conn->prepare("UPDATE client SET nomClient= :nomClient WHERE login= :loginClient");
+		$requete->bindParam(':nomClient', $leNouveauNom);
+		$requete->bindParam(':loginClient', $leLoginClient);
+		if (!$requete->execute()) {
+			die("Erreur dans UpdateMDP : " . $requete->errorCode());
+		}
+	}
+
+
+	//-------------------Getteur -------------------------------------------------------------------------
+	public function GetMotDePasse($leLoginClient)
+	{
+		$AncienMdp = $this->conn->prepare("SELECT pwd FROM client WHERE login= :loginClient;");
+		$AncienMdp->bindParam(':loginClient', $leLoginClient);
+		$AncienMdp->execute();
+		$return = $AncienMdp->fetch();
+		return $return['pwd'];
+	}
+
+	public function GetMail($leLoginClient)
+	{
+		$mailClient = $this->conn->prepare("SELECT emailClient FROM client WHERE login= :loginClient;");
+		$mailClient->bindParam(':loginClient', $leLoginClient);
+		$mailClient->execute();
+		$return = $mailClient->fetch();
+		return $return['emailClient'];
+	}
+
+
+	public function GetLesNomsFilms()
+	{
+		$nomsFilms = $this->conn->prepare("SELECT idSupport ,titreSupport FROM support");
+		$nomsFilms->execute();
+		$return = $nomsFilms->fetchAll();
+		return $return;
 	}
 }

@@ -46,7 +46,6 @@ class gestionVideo
 		$this->chargeLesEmprunts();
 	}
 
-
 	//METHODE CHARGEANT TOUTES LES Clients--------------------------------------------------------------------------------------
 	private function chargeLesClients()
 	{
@@ -162,13 +161,13 @@ class gestionVideo
 
 
 	//METHODE INSERANT UN CLIENT----------------------------------------------------------------------------------------------------------
-	public function ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient)
-	{
-		//insertion du client dans la base de données
-		$sonNumero = $this->maBD->insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
-		//instanciation du client et ajout de celui-ci dans la collection
-		$this->tousLesClients->ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
-	}
+	// public function ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient)
+	// {
+	// 	//insertion du client dans la base de données
+	// 	$sonNumero = $this->maBD->insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
+	// 	//instanciation du client et ajout de celui-ci dans la collection
+	// 	$this->tousLesClients->ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
+	// }
 	//METHODE INSERANT UN FILM----------------------------------------------------------------------------------------------------------
 	public function ajouteUnFilm($unIdFilm, $unTitreFilm, $unRealisateurFilm, $unIdGenre, $uneDureeFilm)
 	{
@@ -327,8 +326,36 @@ class gestionVideo
 		return $this->tousLesEpisodes->lesEpisodesAuFormatHTML();
 	}
 
-	public function envoielesEmprunt($unIdClient)
+	//Méthode de mise à jour des données	
+
+	public function updateUnMdp($nouveauMdp, $loginClient)
 	{
-		return $this->maBD->getLesEmprunts($unIdClient);
+		$this->maBD->UpdateMotDePasseUser($nouveauMdp, $loginClient);
+	}
+
+	public function updateUnAdresseMail($newAdrMail, $loginClient)
+	{
+		$this->maBD->UpdateAdresseMail($newAdrMail, $loginClient);
+	}
+
+	public function updateUnNom($nouveauNom, $loginClient)
+	{
+		$this->maBD->UpdateNomUser($nouveauNom, $loginClient);
+	}
+
+	//Getteur
+	public function getMdp($loginClient)
+	{
+		return $this->maBD->GetMotDePasse($loginClient);
+	}
+
+	public function getMail($loginClient)
+	{
+		return $this->maBD->GetMail($loginClient);
+	}
+
+	public function getLesNomsFilms()
+	{
+		return $this->maBD->GetLesNomsFilms();
 	}
 }

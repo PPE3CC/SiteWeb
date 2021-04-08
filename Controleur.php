@@ -86,11 +86,12 @@ class Controleur
 		switch ($action) {
 
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
-			case 'visualiser':
+			case 'ajoutEmprunt':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
+				$lesFilms = $this->maVideotheque->getLesNomsFilms();
+				require "Vues/ajoutEmprunt.php";
 
 				break;
-
 				//CAS visualisation 
 			case 'visuEmprunt':
 				//ici il faut pouvoir afficher la liste des emprunts pour un utilisateur
@@ -101,10 +102,9 @@ class Controleur
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
 			case 'modifier':
 				// ici il faut pouvoir modifier le mot de passe de l'utilisateur
-				require 'Vues/menu.php';
-				require 'Vues/modifCord.php';
+				$ancienMdp = $this->maVideotheque->getMdp($_SESSION['login_client']);
+				require 'Vues/modifProfil.php';
 				break;
-
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
 			case 'nouveauLogin':
 				// ici il faut pouvoir recuperer un nouveau utilisateur
@@ -116,7 +116,23 @@ class Controleur
 				$dateAbonnement = $_POST['dateAbonnementClient'];
 				$login = $_POST['login'];
 				$password = $_POST['password'];
-				$this->maVideotheque->ajouteUnClient($nom, $prenom, $email, $dateAbonnement, $login, $password);
+				$verifIdentifiant = $this->maVideotheque->VerifIdentifiant($login);
+
+				if ($verifIdentifiant == 0) {
+					$this->maVideotheque->ajouteUnClient($nom, $prenom, $email, $dateAbonnement, $login, $password);
+					echo "Vous avez bien créer votre compte";
+					//mail("PPE3.Carcouet@gmail.com", "Nouveau client", "Nouveau client enregistré sur votre site :\nMonsieur/Madame" + $nom + " " + $prenom +" vient de créer un compte sur votre site web. Avec l'adresse suivante : " + $email + ". En date du " + $dateAbonnement + ". Login : " + $login + ".");
+					//mail($email, "Inscription en attente de validation par notre équipe", "Bonjour Monsieur/Madame " + $nom + " " + $prenom + ".\n\n
+					//Nous sommes heureux de vous compter parmis nos inscrits à notre service de vidéothèque !\n 
+					//Votre inscription à bien était reçu et est en cours de validation. Cependant il reste une dernière étape :\n 
+					//En effet, afin de finaliser votre inscription, veuillez nous envoyer un chèque de 45€ à l'ordre suivant : VidéoStourem.\n 
+					//Après réception de ce dernier nous validerons votre compte dans les 24h qui suivent la réception.\n\n 
+					//Veuillez agréer, madame, monsieur, l'expression de nos sincère salutations. \n\n
+					//L'équipe VidéoStouRem.");
+					//A tester en mode en ligne.
+				} else {
+					echo "Identifiants déjà utilisé";
+				}
 				break;
 
 				//CAS verifier un utilisateur ------------------------------------------------------------------------------
@@ -125,11 +141,11 @@ class Controleur
 				//Je récupère les login et password saisi et je verifie leur existancerequire
 				//pour cela je verifie dans le conteneurClient via la gestion.
 				$_SESSION["login_client"] = $_POST['login'];
+				$ceLogin = $_POST['login'];
 				$unPassword = $_POST['password'];
-				$resultat = $this->maVideotheque->verifLogin($_SESSION["login_client"], $unPassword);
+				$resultat = $this->maVideotheque->verifLogin($ceLogin, $unPassword);
 				//si le client existe alors j'affiche le menu et la page visuGenre.php
 				if ($resultat == 1) {
-					require 'Vues/menu.php';
 					echo $this->maVideotheque->listeLesGenres();
 				} else {
 					if ($resultat == 2) {
@@ -144,17 +160,22 @@ class Controleur
 						// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
 						//des mauvais identifiants;
 						session_destroy();
-
 						echo "</nav>
 												<div class='container h-100'>
 					 								<div class='row h-100 justify-content-center align-items-center'>
 						 								<span class='text-white'>Identifiants incorrects</span>
 			  									</div>
 					 							</div>
-											<meta http-equiv='refresh' content='1;index.php'>";
+											<meta  content='1;index.php'>";
 					}
 				}
 				break;
+
+			case 'forgetmdp':
+				// if (isset($_POST['mailforgetpwd']) && isset($_POST['loginforgetpwd'])) {
+				$emailClient = $this->maVideotheque->getMail($_POST['loginforgetpwd']);
+				// }
+				require "Vues/forgetPassword.php";
 		}
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-﻿<BR/>
+<BR/>
 Erreur
 <?php
 echo '<BR/>';

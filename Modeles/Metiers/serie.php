@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once 'support.php';
 Class serie extends support
 	{

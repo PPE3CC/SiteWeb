@@ -1,7 +1,7 @@
-﻿<?php
+<?php
 
-Class client
-	{
+class client
+{
 	//ATTRIBUTS PRIVES-------------------------------------------------------------------------
 	private $idClient;
 	private $nomClient;
@@ -14,7 +14,7 @@ Class client
 
 	//CONSTRUCTEUR-----------------------------------------------------------------------------
 	public function __construct($unIdClient, $unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPwdClient, $unBoolActif)
-		{
+	{
 		$this->idClient = $unIdClient;
 		$this->nomClient = $unNomClient;
 		$this->prenomClient = $unPrenomClient;
@@ -23,22 +23,22 @@ Class client
 		$this->loginClient = $unLoginClient;
 		$this->pwdClient = $unPwdClient;
 		$this->actif = $unBoolActif;
-		}
+	}
 
 	//ACCESSEURS-------------------------------------------------------------------------------
 	public function getIdClient()
-		{
+	{
 		return $this->idClient;
-		}
+	}
 
 	public function getNomClient()
-		{
+	{
 		return $this->nomClient;
-		}
+	}
 	public function getPrenomClient()
-		{
+	{
 		return $this->prenomClient;
-		}
+	}
 	public function getEmailClient()
 	{
 		return $this->emailClient;
@@ -59,7 +59,4 @@ Class client
 	{
 		return $this->actif;
 	}
-
-	}
-
-?>
+}
