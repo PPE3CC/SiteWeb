@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 // session_destroy();
 include 'Controleur.php';
@@ -41,7 +41,7 @@ function premier_affichage()
                                             <input class='form-group' type='password' placeholder='Mot de passe' name='password'/><br>
                                             <input type='hidden' name='vue' value='compte'>
                                             <input type='hidden' name='action' value='verifLogin'/>
-                                            <input class='btn btn-secondary mx-auto' type='submit' value='Connexion'/>
+                                            <input class='btn-design' type='submit' value='Connexion'/>
                                         </form>
                                         <a href='index.php?vue=compte&action=forgetmdp' class='text-secondary'>Mot de passe oublié ?</a>
                                     </td>
@@ -56,7 +56,7 @@ function premier_affichage()
                                             <input class='form-group' type='password' id='password' name='password' placeholder='Choisir un mot de passe'/><br>
 											<input type=hidden name=vue value=compte>
 											<input type=hidden name=action value=nouveauLogin>
-                                            <input class='btn btn-secondary' type='submit' value='Enregister'/>
+                                            <input class='btn-design' type='submit' value='Enregister'/>
                                         </form>
                                     </td>
                             </tbody>
