@@ -424,4 +424,13 @@ class accesBD
 		$return = $nomsFilms->fetchAll();
 		return $return;
 	}
+
+	public function GetLesEmprunts($leLoginClient)
+	{
+		$empruntsUser = $this->conn->prepare("SELECT support.titreSupport, emprunt.dateEmprunt FROM emprunt, support, client  WHERE  emprunt.idClient= client.idClient AND client.login LIKE :loginClient AND emprunt.idSupport= support.idSupport");
+		$empruntsUser->bindParam(':loginClient', $leLoginClient);
+		$empruntsUser->execute();
+		$return = $empruntsUser->fetchAll();
+		return $return;
+	}
 }

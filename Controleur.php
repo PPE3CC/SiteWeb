@@ -95,7 +95,6 @@ class Controleur
 				//CAS visualisation 
 			case 'visuEmprunt':
 				//ici il faut pouvoir afficher la liste des emprunts pour un utilisateur
-				require 'Vues/menu.php';
 				require 'Vues/emprunts.php';
 				break;
 
