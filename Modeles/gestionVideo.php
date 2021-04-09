@@ -40,9 +40,9 @@ class gestionVideo
 		$this->chargeLesGenres();
 		$this->chargeLesSupports();
 		// $this->chargeLesFilms();
-		$this->chargeLesSeries();
-		$this->chargeLesSaisons();
-		$this->chargeLesEpisodes();
+		// $this->chargeLesSeries();	
+		// $this->chargeLesSaisons();
+		// $this->chargeLesEpisodes();
 		$this->chargeLesEmprunts();
 	}
 
@@ -96,17 +96,17 @@ class gestionVideo
 	// }
 
 	//METHODE CHARGEANT TOUTES LES SERIES-----------------------------------------------------------------------------------
-	private function chargeLesSeries()
-	{
-		$resultat = $this->maBD->chargement('serie');
-		$nb = 0;
-		while ($nb < sizeof($resultat)) {
-			$leSupport = $this->tousLesSupports->donneObjetSupportDepuisNumero($resultat[$nb][0]);
-			$leGenre = $this->tousLesGenres->donneObjetGenreDepuisNumero($leSupport->getLeGenreDeSupport()->getIdGenre());
-			$this->toutesLesSeries->ajouteUneSerie($resultat[$nb][0], $leSupport->getTitreSupport(), $leSupport->getRealisateurSupport(), $leSupport->getImageSupport(), $leGenre, $resultat[$nb][1]);
-			$nb++;
-		}
-	}
+	// private function chargeLesSeries()
+	// {
+	// 	$resultat = $this->maBD->chargement('serie');
+	// 	$nb = 0;
+	// 	while ($nb < sizeof($resultat)) {
+	// 		$leSupport = $this->tousLesSupports->donneObjetSupportDepuisNumero($resultat[$nb][0]);
+	// 		$leGenre = $this->tousLesGenres->donneObjetGenreDepuisNumero($leSupport->getLeGenreDeSupport()->getIdGenre());
+	// 		$this->toutesLesSeries->ajouteUneSerie($resultat[$nb][0], $leSupport->getTitreSupport(), $leSupport->getRealisateurSupport(), $leSupport->getImageSupport(), $leGenre, $resultat[$nb][1]);
+	// 		$nb++;
+	// 	}
+	// }
 	//METHODE CHARGEANT TOUTES LES SAISONS-----------------------------------------------------------------------------------
 	private function chargeLesSaisons()
 	{
@@ -120,16 +120,16 @@ class gestionVideo
 		}
 	}
 	//METHODE CHARGEANT TOUTES LES EPISODES-----------------------------------------------------------------------------------
-	private function chargeLesEpisodes()
-	{
-		$resultat = $this->maBD->chargement('episode');
-		$nb = 0;
-		while ($nb < sizeof($resultat)) {
-			$laSaison = $this->toutesLesSaisons->donneObjetSaisonDepuisNumero($resultat[$nb][0], $resultat[$nb][1]);
-			$this->tousLesEpisodes->ajouteUnEpisode($resultat[$nb][2], $resultat[$nb][3], $resultat[$nb][4], $laSaison);
-			$nb++;
-		}
-	}
+	// private function chargeLesEpisodes()
+	// {
+	// 	$resultat = $this->maBD->chargement('episode');
+	// 	$nb = 0;
+	// 	while ($nb < sizeof($resultat)) {
+	// 		$laSaison = $this->toutesLesSaisons->donneObjetSaisonDepuisNumero($resultat[$nb][0], $resultat[$nb][1]);
+	// 		$this->tousLesEpisodes->ajouteUnEpisode($resultat[$nb][2], $resultat[$nb][3], $resultat[$nb][4], $laSaison);
+	// 		$nb++;
+	// 	}
+	// }
 	//METHODE CHARGEANT TOUS LES EMPRUNTS -----------------------------------------------------------------------------------
 	private function chargeLesEmprunts()
 	{
@@ -357,5 +357,11 @@ class gestionVideo
 	public function getLesNomsFilms()
 	{
 		return $this->maBD->GetLesNomsFilms();
+	}
+
+	public function getLesEmprunts($loginClient)
+	{
+
+		return $this->maBD->GetLesEmprunts($loginClient);
 	}
 }

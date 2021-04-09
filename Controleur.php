@@ -93,9 +93,9 @@ class Controleur
 
 				break;
 				//CAS visualisation 
-			case 'visualiserEmprunts':
+			case 'visuEmprunt':
 				//ici il faut pouvoir afficher la liste des emprunts pour un utilisateur
-				require 'Vues/emprunt.php';
+				require 'Vues/emprunts.php';
 				break;
 
 				//CAS enregistrement d'une modification sur le compte------------------------------------------------------------------------------
