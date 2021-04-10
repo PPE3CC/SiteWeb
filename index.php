@@ -30,8 +30,8 @@ function premier_affichage()
                     <div class='row justify-content-center align-items-center'>
                         <table class='table w-50'>
                             <thead>
-                                <td class='head-table-connexion text-white'>Je suis déjà client</td>
-                                <td class='head-table-connexion text-white'>Je crée mon compte</td>
+                                <td class='head-table-connexion'>Je suis déjà client</td>
+                                <td class='head-table-connexion'>Je crée mon compte</td>
                             </thead>
                             <tbody>
                                 <tr>

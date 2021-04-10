@@ -14,7 +14,7 @@
 
 body
 {
-
+    background-color: #FFFCF9;
    margin-top: -24px !important;
    /* background-color: rgb(77, 77, 77)!important; */
    /* background:
@@ -118,8 +118,14 @@ table{
 	margin-top: 1rem;
 }
 
-.test{
-	align-content: space-between;
+.tableau{
+    border: solid #FF6978;
+}
+
+
+.deplaceCoord{
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
 }
 /*TESTETSTSTSETSET */
 

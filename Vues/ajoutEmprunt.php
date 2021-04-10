@@ -14,15 +14,15 @@
             $this->maVideotheque->updateUnNom($changeNom, $loginClient);
         }
     }
-    echo '<table class="table table-bordered w-50">
+    echo '<table class="table tableau w-50">
     <thead>
       <tr>';
     if (is_array($lesFilms)) {
         foreach ($lesFilms as $leFilm) {
 
             echo '<tr>';
-            echo '<th scope="col" class="table-active">' . $leFilm[1] . '</th>';
-            echo '<th scope="col" class="table-light" ><button type="button" class="ajoutDuFilm btn-design" 
+            echo '<th scope="col" class="">' . $leFilm[1] . '</th>';
+            echo '<th scope="col" class="" ><button type="button" class="ajoutDuFilm btn-design" 
             value=idfilm=' . $leFilm["idSupport"] . '&idclient=' . $_SESSION['login_client'] . '>
             Emprunter</button></th>';
             echo '</tr>';

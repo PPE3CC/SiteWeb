@@ -25,7 +25,7 @@
 				<ul class='navbar-nav'>
 					<li class='nav-item active'>
 						<ul class='dropdown'>
-							<a class='btn-design' href='index.php'>Accueil </a>
+							<a class='btn-design' href='index.php?vue=compte&action=acceuil'>Accueil </a>
 						</ul>
 					</li>
 					<li class='nav-item active'>
@@ -43,7 +43,6 @@
 					<ul class='dropdown-menu'>
 						<li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li>
 						<li><a href='index.php?vue=compte&action=modifier'>Modifier mon profil</a></li>
-						
 						<li><a href='index.php?action=acceuil'>Se déconnecter</a></li>
 					</ul>
 				</ul>

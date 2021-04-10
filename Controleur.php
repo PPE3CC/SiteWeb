@@ -149,23 +149,19 @@ class Controleur
 				} else {
 					if ($resultat == 2) {
 						echo "</nav>
-												<div class='container h-100'>
-					 								<div class='row h-100 justify-content-center align-items-center'>
-						 								<span class='text-white'>Votre compte n'est pas actif.</span>
-			  									</div>
-					 							</div>
-											<meta http-equiv='refresh' content='1;index.php'>";
+								<div>
+					 				<div>Votre compte n'est pas actif.
+			  							</div>
+									<meta http-equiv='refresh' content='1;index.php'>";
 					} else {
 						// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
 						//des mauvais identifiants;
 						session_destroy();
 						echo "</nav>
-												<div class='container h-100'>
-					 								<div class='row h-100 justify-content-center align-items-center'>
-						 								<span class='text-white'>Identifiants incorrects</span>
-			  									</div>
-					 							</div>
-											<meta  content='1;index.php'>";
+									<div class=''>
+										<span class=''>Identifiants incorrects</span>
+									</div>
+									<meta http-equiv='refresh' content='1;index.php'>";
 					}
 				}
 				break;
@@ -175,76 +171,8 @@ class Controleur
 				$emailClient = $this->maVideotheque->getMail($_POST['loginforgetpwd']);
 				// }
 				require "Vues/forgetPassword.php";
-		}
-	}
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//----------------------------Film--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function vueFilm($action)
-	{
-		//SELON l'action demandée
-		switch ($action) {
-
-				//CAS visualisation de tous les films-------------------------------------------------------------------------------------------------
-			case "visualiser":
-				//ici il faut pouvoir visualiser l'ensemble des films
-				require 'Vues/construction.php';
-				break;
-		}
-	}
-
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//----------------------------Serie--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function vueSerie($action)
-	{
-		//SELON l'action demandée
-		switch ($action) {
-
-				//CAS visualisation de toutes les Series-------------------------------------------------------------------------------------------------
-			case "visualiser":
-				//ici il faut pouvoir visualiser l'ensemble des Séries
-				require 'Vues/construction.php';
-				break;
-		}
-	}
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//----------------------------Vidéotheque-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	private function vueVideotheque($action)
-	{
-		//SELON l'action demandée
-		switch ($action) {
-
-				//CAS Choix d'un genre------------------------------------------------------------------------------------------------
-			case "choixGenre":
-				if ($this->maVideotheque->donneNbGenres() == 0) {
-					$message = "il n existe pas de genre";
-					$lien = 'index.php?vue=ressource&action=ajouter';
-					$_SESSION['message'] = $message;
-					$_SESSION['lien'] = $lien;
-					require 'Vues/erreur.php';
-				} else {
-					$_SESSION['lesRessources'] = $this->maMairie->listeLesRessources();
-					require 'Vues/voirRessource.php';
-				}
-				break;
-
-				//CAS enregistrement d'une ressource dans la base------------------------------------------------------------------------------
-			case "enregistrer":
-				$nom = $_POST['nomRessource'];
-				if (empty($nom)) {
-					$message = "Veuillez saisir les informations";
-					$lien = 'index.php?vue=ressource&action=ajouter';
-					$_SESSION['message'] = $message;
-					$_SESSION['lien'] = $lien;
-					require 'Vues/erreur.php';
-				} else {
-					$this->maMairie->ajouteUneressource($nom);
-					require 'Vues/enregistrer.php';
-					//$_SESSION['Controleur'] = serialize($this);
-				}
-				break;
+			case 'acceuil':
+				echo $this->maVideotheque->listeLesGenres();
 		}
 	}
 }

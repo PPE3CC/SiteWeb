@@ -29,15 +29,15 @@ class conteneurGenre
 	public function listeDesGenres()
 	{
 		$liste = "<div class=''>
-                    <div class='row h-100 justify-content-center align-items-center'>
-                        <table class='table w-50'>
+                    <div class='' style='margin-top: 5rem;'>
+                        <table class='table w-50 tableau'>
                             <thead>
-                                <td class='head-table-genre text-white'>Identifiant genre</td>
-                                <td class='head-table-genre text-white'>Genre</td>
+                                <th class='head-table-genre'>Identifiant genre</td>
+                                <th class='head-table-genre'>Genre</td>
                             </thead>
                             <tbody>";
 		foreach ($this->lesGenres as $unGenre) {
-			$liste = $liste . '<tr><td class="text-white td-table">' . $unGenre->getIdGenre() . '</td><td class="text-white td-table">' . $unGenre->getLibelleGenre() . '</td></tr>';
+			$liste = $liste . '<tr><td class="td-table">' . $unGenre->getIdGenre() . '</td><td class="td-table">' . $unGenre->getLibelleGenre() . '</td></tr>';
 		}
 		$liste = $liste . "</tbody></table></div></div>";
 		return $liste;

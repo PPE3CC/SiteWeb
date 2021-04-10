@@ -1,5 +1,5 @@
-<p>
-    <a class="btn btn-secondary" data-toggle="collapse" href="#collapseMdp" role="button" aria-expanded="false" aria-controls="collapseMdp">
+<p class="deplaceCoord">
+    <a class="btn-design" data-toggle="collapse" href="#collapseMdp" role="button" aria-expanded="false" aria-controls="collapseMdp">
         Changement de mot de passe
     </a>
 </p>
@@ -22,7 +22,7 @@
 </div>
 
 <p>
-    <a class="btn btn-secondary" data-toggle="collapse" href="#collapseCoord" role="button" aria-expanded="false" aria-controls="collapseCoord">
+    <a class="btn-design" data-toggle="collapse" href="#collapseCoord" role="button" aria-expanded="false" aria-controls="collapseCoord">
         Changement de coordonnées
     </a>
 </p>
