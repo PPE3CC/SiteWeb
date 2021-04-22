@@ -14,11 +14,8 @@
 
 	<head>
 		<?php
-		if (isset($_POST['action'])) {
-			$action = $_POST['action'];
-		}
 
-		if (isset($_SESSION['login_client']) || isset($_POST['login']) || (!$action = "acceuil")) {
+		if (isset($_SESSION['login_client']) || isset($_POST['login'])) {
 			echo "	<body>
 		<nav class='navbar navbar-expand-lg color-nav-bar'>
 			<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
@@ -54,6 +51,7 @@
 		";
 		} else {
 			echo "	<body>
+
 			";
 		}
 		?>
