@@ -1,6 +1,6 @@
 ﻿<head>
 	<title>
-		Ma Vidéothéque
+		NousTubes
 	</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="stylevideo.css" type="text/css" />
@@ -51,7 +51,6 @@
 		";
 		} else {
 			echo "	<body>
-
 			";
 		}
 		?>

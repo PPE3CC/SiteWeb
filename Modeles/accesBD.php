@@ -424,6 +424,21 @@ class accesBD
 		$return = $nomsFilms->fetchAll();
 		return $return;
 	}
+	// public function GetLesClients()
+	// {
+	// 	$lesClients = $this->conn->prepare("SELECT  emailClient FROM client where;");
+	// 	$lesClients->execute();
+	// 	$return[] = $lesClients->fetch();
+	// 	return $t;
+	// }
+	public function GetLaDateAbonnement($leLoginClient)
+	{
+		$dateAbonnement = $this->conn->prepare("SELECT dateAbonnementClient FROM client WHERE login= :loginClient;");
+		$dateAbonnement->bindParam(':loginClient', $leLoginClient);
+		$dateAbonnement->execute();
+		$return = $dateAbonnement->fetch();
+		return $return['dateAbonnementClient'];
+	}
 
 	public function GetLesEmprunts($leLoginClient)
 	{
@@ -431,6 +446,12 @@ class accesBD
 		$empruntsUser->bindParam(':loginClient', $leLoginClient);
 		$empruntsUser->execute();
 		$return = $empruntsUser->fetchAll();
+
+		// A TESTER 
+		// $lesEmprunts = $this->conn->prepare("SELECT support.titreSupport , support.realisateur FROM emprunt,support,client WHERE emprunt.idSupport=support.idSupport AND emprunt.idClient=client.idClient AND client.login= :loginClient GROUP BY titreSupport");
+		// $lesEmprunts->bindParam(':loginClient', $leLoginClient);
+		// $lesEmprunts->execute();
+		// $return = $lesEmprunts->fetchAll();
 		return $return;
 	}
 }
