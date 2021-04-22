@@ -3,17 +3,6 @@
  </div>
 
  <?php
-    $loginClient = $_SESSION['login_client'];
-    if ((isset($_POST['admail'])) || (isset($_POST['changeNom']))) {
-        $adresseMail = $_POST['admail'];
-        $changeNom = $_POST['changeNom'];
-        if (isset($_POST['admail']) && empty($_POST['changeNom'])) {
-            $this->maVideotheque->updateUnAdresseMail($adresseMail, $loginClient);
-        }
-        if (isset($_POST['changeNom']) && empty($_POST['admail'])) {
-            $this->maVideotheque->updateUnNom($changeNom, $loginClient);
-        }
-    }
     echo '<table class="table tableau w-50">
     <thead>
       <tr>';

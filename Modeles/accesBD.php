@@ -446,12 +446,6 @@ class accesBD
 		$empruntsUser->bindParam(':loginClient', $leLoginClient);
 		$empruntsUser->execute();
 		$return = $empruntsUser->fetchAll();
-
-		// A TESTER 
-		// $lesEmprunts = $this->conn->prepare("SELECT support.titreSupport , support.realisateur FROM emprunt,support,client WHERE emprunt.idSupport=support.idSupport AND emprunt.idClient=client.idClient AND client.login= :loginClient GROUP BY titreSupport");
-		// $lesEmprunts->bindParam(':loginClient', $leLoginClient);
-		// $lesEmprunts->execute();
-		// $return = $lesEmprunts->fetchAll();
 		return $return;
 	}
 }

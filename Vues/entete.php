@@ -41,7 +41,6 @@
 				<ul class='dropdown test '>
 					<button class='btn-design' type='button' data-toggle='dropdown'>Profil</button>
 					<ul class='dropdown-menu'>
-						<li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li>
 						<li><a href='index.php?vue=compte&action=modifier'>Modifier mon profil</a></li>
 						<li><a href='index.php?action=acceuil'>Se déconnecter</a></li>
 					</ul>
@@ -54,3 +53,5 @@
 			";
 		}
 		?>
+
+		<!-- <li><a href='index.php?vue=compte&action=visualiser'>Voir mon profil</a></li> -->

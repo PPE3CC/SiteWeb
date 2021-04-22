@@ -16,7 +16,7 @@ body
 {
     background-color: #FFFCF9;
    margin-top: -24px !important;
-   background-color: rgb(148, 179, 223)!important;
+   /* background-color: rgb(148, 179, 223)!important; */
 
     /* background:
     repeating-linear-gradient(190deg, rgba(255, 0, 0, 0.5) 40px,

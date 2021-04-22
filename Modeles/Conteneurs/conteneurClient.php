@@ -88,14 +88,15 @@ class conteneurClient
 			if (strcmp($unPassword, $testPassword) === 0 && strcmp($unPassword, $testPassword) === 0) {
 				//maj du booléen
 				$trouve = 1;
-			// if (strcmp($unPassword, $testPassword) === 0 && strcmp($unLogin, $testLogin) === 0) {
-			// 	//maj du booléen
-			// 	if ($actif == 0) {
-			// 		$trouve = 2;
-			// 	} else {
-			// 		$trouve = 1;
-			// 	}
-			// }
+				// if (strcmp($unPassword, $testPassword) === 0 && strcmp($unLogin, $testLogin) === 0) {
+				// 	//maj du booléen
+				// 	if ($actif == 0) {
+				// 		$trouve = 2;
+				// 	} else {
+				// 		$trouve = 1;
+				// 	}
+				// }
+			}
 			//SINON on passe au client suivant
 			else {
 				$iClient->next();

@@ -361,7 +361,6 @@ class gestionVideo
 
 	public function getLesEmprunts($loginClient)
 	{
-
 		return $this->maBD->GetLesEmprunts($loginClient);
 	}
 	// public function getLesClients()
