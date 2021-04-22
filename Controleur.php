@@ -60,15 +60,15 @@ class Controleur
 			case 'compte':
 				$this->vueCompte($action);
 				break;
-			case 'film':
-				$this->vueFilm($action);
-				break;
-			case 'serie':
-				$this->vueSerie($action);
-				break;
-			case 'Videotheque':
-				$this->vueRessource($action);
-				break;
+				// case 'film':
+				// 	$this->vueFilm($action);
+				// 	break;
+				// case 'serie':
+				// 	$this->vueSerie($action);
+				// 	break;
+				// case 'Videotheque':
+				// 	$this->vueRessource($action);
+				// 	break;
 			case "accueil":
 				session_destroy();
 				break;
@@ -84,13 +84,12 @@ class Controleur
 
 		//SELON l'action demandée
 		switch ($action) {
-
 				//CAS visualisation de mes informations-------------------------------------------------------------------------------------------------
 			case 'ajoutEmprunt':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
 				$lesFilms = $this->maVideotheque->getLesNomsFilms();
 				require "Vues/ajoutEmprunt.php";
-
+				break;
 			case 'visuEmprunt':
 				//ici il faut pouvoir avoir accès au information de l'internaute connecté
 				$laDateAbonnement = $this->maVideotheque->getLaDateAbonnement($_SESSION['login_client']);

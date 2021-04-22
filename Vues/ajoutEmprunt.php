@@ -1,4 +1,4 @@
- <div class="bg-transparent col-12">
+ <div class="form-group d-flex justify-content-center">
      <h3>Ajout d'un emprunt</h3>
  </div>
 

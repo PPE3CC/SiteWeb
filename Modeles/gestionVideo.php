@@ -161,23 +161,23 @@ class gestionVideo
 
 
 	//METHODE INSERANT UN CLIENT----------------------------------------------------------------------------------------------------------
-	// public function ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient)
-	// {
-	// 	//insertion du client dans la base de données
-	// 	$sonNumero = $this->maBD->insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
-	// 	//instanciation du client et ajout de celui-ci dans la collection
-	// 	$this->tousLesClients->ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
-	// }
-	//METHODE INSERANT UN FILM----------------------------------------------------------------------------------------------------------
-	public function ajouteUnFilm($unIdFilm, $unTitreFilm, $unRealisateurFilm, $unIdGenre, $uneDureeFilm)
+	public function ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient)
 	{
-		//insertion du film dans la base de données
-		$sonNumero = $this->maBD->insertFilm($unTitreFilm, $unRealisateurFilm, $unIdGenre, $uneDureeFilm);
-		//instanciation du film et ajout de celui-ci dans la collection
-		$leGenre = null;
-		$leGenre = $leGenre->donneObjetGenreDepuisNumero($unIdGenre);
-		$this->tousLesFilms->ajouteUnFilm($unIdFilm, $unTitreFilm, $unRealisateurFilm, $leGenre, $uneDureeFilm);
+		//insertion du client dans la base de données
+		$sonNumero = $this->maBD->insertClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient);
+		//instanciation du client et ajout de celui-ci dans la collection
+		$this->tousLesClients->ajouteUnClient($unNomClient, $unPrenomClient, $unEmailClient, $uneDateAbonnement, $unLoginClient, $unPasswordClient, 0);
 	}
+	//METHODE INSERANT UN FILM----------------------------------------------------------------------------------------------------------
+	// public function ajouteUnFilm($unIdFilm, $unTitreFilm, $unRealisateurFilm, $unIdGenre, $uneDureeFilm)
+	// {
+	// 	//insertion du film dans la base de données
+	// 	$sonNumero = $this->maBD->insertFilm($unTitreFilm, $unRealisateurFilm, $unIdGenre, $uneDureeFilm);
+	// 	//instanciation du film et ajout de celui-ci dans la collection
+	// 	$leGenre = null;
+	// 	$leGenre = $leGenre->donneObjetGenreDepuisNumero($unIdGenre);
+	// 	$this->tousLesFilms->ajouteUnFilm($unIdFilm, $unTitreFilm, $unRealisateurFilm, $leGenre, $uneDureeFilm);
+	// }
 	//METHODE INSERANT UNE SERIE----------------------------------------------------------------------------------------------------------
 	public function ajouteUneSerie($unIdSerie, $unTitreSerie, $unRealisateurSerie, $unIdGenre, $unResumeSerie)
 	{

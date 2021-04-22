@@ -48,15 +48,16 @@ function premier_affichage()
                                  
                                     <td class='justify-content-center td-table'>
                                         <form id='creationCompte' method='post' role='form'>
-                                            <input class='style-input' type='text' id='nomClient' name='nomClient' placeholder='saisir votre nom'/><br>
-                                            <input class='style-input' type='text' id='prenomClient' name='prenomClient' placeholder='Saisir votre prenom'/><br>
-                                            <input class='style-input' type='text' id='emailClient' name='emailClient' placeholder='Saisir votre email'/><br>
-                                            <input class='style-input' type='date' id='dateAbonnementClient'  name='dateAbonnementClient' placeholder='Date souhaitée d abonnement'/><br>
-                                            <input class='style-input' type='text' id='login' name='login' placeholder='Saisir votre login'/><br>
-                                            <input class='style-input' type='password' id='password' name='password' placeholder='Choisir un mot de passe'/><br>
+                                            <input class='style-input' type='text' id='nomClient' name='nomClient' placeholder='saisir votre nom' require/><br>
+                                            <input class='style-input' type='text' id='prenomClient' name='prenomClient' placeholder='Saisir votre prenom' require/><br>
+                                            <input class='style-input' type='text' id='emailClient' name='emailClient' placeholder='Saisir votre email' require/><br>
+                                            <input class='style-input' type='date' id='dateAbonnementClient'  name='dateAbonnementClient' placeholder='Date souhaitée d abonnement' require/><br>
+                                            <input class='style-input' type='text' id='login' name='login' placeholder='Saisir votre login' require/><br>
+                                            <input class='style-input' type='password' id='password' name='password' placeholder='Choisir un mot de passe' require/><br>
 											<input type=hidden name=vue value=compte>
 											<input type=hidden name=action value=nouveauLogin>
                                             <input class='btn-design' type='submit' value='Enregister'/>
+                                           
                                         </form>
                                     </td>
                             </tbody>

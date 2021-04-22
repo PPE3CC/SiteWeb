@@ -2,7 +2,6 @@
 
 <body>
   <?php
-  $lesEmprunts = $this->maVideotheque->getLesEmprunts($_SESSION["login_client"]);
   echo "<div  class='form-group d-flex justify-content-center'> La date du début d'abonnement est le  &nbsp<B>", $laDateAbonnement, "</B></div>";
 
   echo "<div class='form-group justify-content-center'>";

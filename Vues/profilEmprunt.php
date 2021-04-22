@@ -3,7 +3,7 @@
         // $loginClient = $_SESSION['login_client'];
 
         // if ((isset($_POST["lesEmprunts"]))) {
-        //     $lesEmprunts = $_POST['lesEmprunts'];
+        //         $lesEmprunts = $_POST['lesEmprunts'];
         // }
         // echo "<div  class='form-group d-flex justify-content-center'> La date du début d'abonnement est le  &nbsp<B>", $laDateAbonnement, "</B></div>";
 
@@ -16,8 +16,8 @@
         //                         <th class='head-table-emprunt text-white'>Realisation</th>
         //                         </tr>";
         // foreach ($lesEmprunts as $emprunt) {
-        //     echo "<tr><td class ='text white'> $emprunt[0]</td>";
-        //     echo "<td class ='text white'> $emprunt[1]</td></tr>";
+        //         echo "<tr><td class ='text white'> $emprunt[0]</td>";
+        //         echo "<td class ='text white'> $emprunt[1]</td></tr>";
         // }
 
         // echo "</thead>";
