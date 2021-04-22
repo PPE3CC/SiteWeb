@@ -127,5 +127,17 @@ table{
     margin-top: 5rem;
     margin-bottom: 1.5rem;
 }
+
+.login-style{
+    border: solid #FF6978;
+    border-radius: 2.5rem;
+    padding: 1.5rem;
+}
+
+.style-input{
+    border: solid #340068;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}   
 /*TESTETSTSTSETSET */
 

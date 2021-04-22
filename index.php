@@ -1,6 +1,6 @@
 ﻿<?php
 session_start();
-// session_destroy();
+session_destroy();
 include 'Controleur.php';
 
 function chargerPage()
@@ -27,8 +27,8 @@ function premier_affichage()
 {
     echo "
                 <div class='container'>
-                    <div class='row justify-content-center align-items-center'>
-                        <table class='table w-50'>
+                    <div class='justify-content-center align-items-center' style='margin-top: 10rem;'>
+                        <table class='table w-50 login-style'>
                             <thead>
                                 <td class='head-table-connexion'>Je suis déjà client</td>
                                 <td class='head-table-connexion'>Je crée mon compte</td>
@@ -37,8 +37,8 @@ function premier_affichage()
                                 <tr>
                                     <td class='td-table justify-content-center'>
                                         <form action=index.php method=POST>
-                                            <input class='form-group' type='text' placeholder='Login' name='login'/><br>
-                                            <input class='form-group' type='password' placeholder='Mot de passe' name='password'/><br>
+                                            <input class='style-input' type='text' placeholder='Login' name='login'/><br>
+                                            <input class='style-input' type='password' placeholder='Mot de passe' name='password'/><br>
                                             <input type='hidden' name='vue' value='compte'>
                                             <input type='hidden' name='action' value='verifLogin'/>
                                             <input class='btn-design' type='submit' value='Connexion'/>
@@ -48,12 +48,12 @@ function premier_affichage()
                                  
                                     <td class='justify-content-center td-table'>
                                         <form id='creationCompte' method='post' role='form'>
-                                            <input class='form-group' type='text' id='nomClient' name='nomClient' placeholder='saisir votre nom'/><br>
-                                            <input class='form-group' type='text' id='prenomClient' name='prenomClient' placeholder='Saisir votre prenom'/><br>
-                                            <input class='form-group' type='text' id='emailClient' name='emailClient' placeholder='Saisir votre email'/><br>
-                                            <input class='form-group' type='date' id='dateAbonnementClient'  name='dateAbonnementClient' placeholder='Date souhaitée d abonnement'/><br>
-                                            <input class='form-group' type='text' id='login' name='login' placeholder='Saisir votre login'/><br>
-                                            <input class='form-group' type='password' id='password' name='password' placeholder='Choisir un mot de passe'/><br>
+                                            <input class='style-input' type='text' id='nomClient' name='nomClient' placeholder='saisir votre nom'/><br>
+                                            <input class='style-input' type='text' id='prenomClient' name='prenomClient' placeholder='Saisir votre prenom'/><br>
+                                            <input class='style-input' type='text' id='emailClient' name='emailClient' placeholder='Saisir votre email'/><br>
+                                            <input class='style-input' type='date' id='dateAbonnementClient'  name='dateAbonnementClient' placeholder='Date souhaitée d abonnement'/><br>
+                                            <input class='style-input' type='text' id='login' name='login' placeholder='Saisir votre login'/><br>
+                                            <input class='style-input' type='password' id='password' name='password' placeholder='Choisir un mot de passe'/><br>
 											<input type=hidden name=vue value=compte>
 											<input type=hidden name=action value=nouveauLogin>
                                             <input class='btn-design' type='submit' value='Enregister'/>
