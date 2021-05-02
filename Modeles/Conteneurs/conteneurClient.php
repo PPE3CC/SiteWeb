@@ -72,7 +72,6 @@ class conteneurClient
 	}
 	public function verificationExistanceClient($unLogin, $unPassword)
 	{
-
 		//initialisation d'un booléen (on part de l'hypothèse que le client n'existe pas)
 		$trouve = 0;
 		//création d'un itérateur sur la collection lesClients
@@ -83,20 +82,14 @@ class conteneurClient
 			// On supprime les caractères invisibles que le SGBD ajoute pour compenser puisqu'on utilise des char(n)
 			$testLogin = trim($iClient->current()->getLoginClient());
 			$testPassword = trim($iClient->current()->getPwdClient());
-			$actif = trim($iClient->current()->getActif());
+			// $actif = trim($iClient->current()->getActif());
+			// var_dump($actif);
 			//On test avec la fonction strcmp
-			if (strcmp($unPassword, $testPassword) === 0 && strcmp($unPassword, $testPassword) === 0) {
-				//maj du booléen
+
+			if (strcmp($unPassword, $testPassword) === 0 && strcmp($unLogin, $testLogin) === 0) {
 				$trouve = 1;
-				if (strcmp($unPassword, $testPassword) === 0 && strcmp($unLogin, $testLogin) === 0) {
-					//maj du booléen
-					if ($actif == 0) {
-						$trouve = 2;
-					} else {
-						$trouve = 1;
-					}
-				}
 			}
+
 			//SINON on passe au client suivant
 			else {
 				$iClient->next();

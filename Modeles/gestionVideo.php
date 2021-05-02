@@ -363,10 +363,6 @@ class gestionVideo
 	{
 		return $this->maBD->GetLesEmprunts($loginClient);
 	}
-	// public function getLesClients()
-	// {
-	// 	return $this->maBD->GetLesClients();
-	// }
 
 	public function getLaDateAbonnement($loginClient)
 	{
@@ -375,7 +371,11 @@ class gestionVideo
 
 	public function afficheLesEmprunts($loginClient)
 	{
-		$var = $this->maBD->GetLesEmprunts($loginClient);
-		return $var;
+		return $this->maBD->GetLesEmprunts($loginClient);
+	}
+
+	public function actifVerif($loginClient)
+	{
+		return $this->maBD->actifUser($loginClient);
 	}
 }

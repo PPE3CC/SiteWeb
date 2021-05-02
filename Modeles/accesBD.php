@@ -448,4 +448,13 @@ class accesBD
 		$return = $empruntsUser->fetchAll();
 		return $return;
 	}
+
+	public function actifUser($leLoginClient)
+	{
+		$actifUser = $this->conn->prepare("SELECT actif FROM client WHERE login = :loginClient");
+		$actifUser->bindParam(':loginClient', $leLoginClient);
+		$actifUser->execute();
+		$return = $actifUser->fetch();
+		return $return['actif'];
+	}
 }

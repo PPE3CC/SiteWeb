@@ -10,7 +10,7 @@ $base = "videoppe3";
 $conn = new PDO("mysql:dbname=$base;host=$hote", $loginBDD, $passwd);
 
 $mailClient = $conn->prepare("INSERT INTO `emprunt`(`dateEmprunt`, `idClient` , `idSupport` )
- VALUES ('2021-10-20' , (SELECT idClient FROM client WHERE client.login like :loginclient) , :idfilm)");
+ VALUES ( NOW() , (SELECT idClient FROM client WHERE client.login like :loginclient) , :idfilm)");
 
 $mailClient->bindParam(':loginclient', $loginclient);
 $mailClient->bindParam(':idfilm', $idfilm);

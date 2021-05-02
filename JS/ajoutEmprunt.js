@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	$(".ajoutDuFilm").click(function(){
 		// alert($(this).val());
-        alert("L'emprunt du film à bien été effectué");
+        // alert("L'emprunt du film à bien été effectué");
 				
 		$.ajax({
 					type: "GET",
@@ -12,5 +12,4 @@ $(document).ready(function(){
         			success: function(){}
 		})
 	})
-
 })

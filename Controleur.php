@@ -105,7 +105,6 @@ class Controleur
 				//CAS ajouter un utilisateur ------------------------------------------------------------------------------
 			case 'nouveauLogin':
 				// ici il faut pouvoir recuperer un nouveau utilisateur
-
 				$this->maVideotheque->ajouteUnClient($_POST['nomClient'], $_POST['prenomClient'], $_POST['emailClient'], $_POST['dateAbonnementClient'], $_POST['login'], $_POST['password'], 0);
 				$nom = $_POST['nomClient'];
 				$prenom = $_POST['prenomClient'];
@@ -141,18 +140,22 @@ class Controleur
 				$ceLogin = $_POST['login'];
 				$unPassword = $_POST['password'];
 				$resultat = $this->maVideotheque->verifLogin($ceLogin, $unPassword);
+				$actif = $this->maVideotheque->actifVerif($_POST['login']);
+				var_dump($actif);
+				var_dump($resultat);
 				//si le client existe alors j'affiche le menu et la page visuGenre.php
-				if ($resultat == 1) {
+				if ($resultat == 1 && $actif == 1) {
 					echo $this->maVideotheque->listeLesGenres();
 				} else {
-					if ($resultat == 2) {
+					if ($actif == 0 && $resultat == 1) {
+						session_destroy();
 						echo "</nav>
 								<div>
 					 				<div>Votre compte n'est pas actif.
 			  							</div>
-									<meta http-equiv='refresh' content='1;index.php'>";
+									";
 					} else {
-						// destroy la session et je repars sur l'acceuil en affichant un texte pour prévenir la personne
+						// destroy la session et je repars sur l'accueil en affichant un texte pour prévenir la personne
 						//des mauvais identifiants;
 						session_destroy();
 						echo "</nav>
@@ -169,7 +172,7 @@ class Controleur
 				$emailClient = $this->maVideotheque->getMail($_POST['loginforgetpwd']);
 				// }
 				require "Vues/forgetPassword.php";
-			case 'acceuil':
+			case 'accueil':
 				echo $this->maVideotheque->listeLesGenres();
 		}
 	}
